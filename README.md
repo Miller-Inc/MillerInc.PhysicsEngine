@@ -36,7 +36,7 @@ To install the library, you can download the repository and add the library to y
 ## Notes
 1. This library is still in development and is not yet ready for production use.
 Please use at your own risk.
-2. This library is licensed under the GNU GENERAL PUBLIC License. You can view the license [here]()
+2. This library is licensed under the GNU GENERAL PUBLIC License. You can view the license [here](https://github.com/Miller-Inc/MillerInc.PhysicsEngine/blob/master/LICENSE.txt)
 3. If you have any questions or comments, please feel free to contact me
 4. This is a library, not a standalone application. You will need to include the library in your project to use it.
 
