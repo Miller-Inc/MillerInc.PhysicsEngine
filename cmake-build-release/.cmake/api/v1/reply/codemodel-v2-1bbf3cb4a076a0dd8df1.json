@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.29"
+						"string" : "3.22"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "PhysicsEngine::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-PhysicsEngine-Release-96febea8f453cfea86bf.json",
+					"jsonFile" : "target-PhysicsEngine-Release-5f10333df7dd4965be93.json",
 					"name" : "PhysicsEngine",
 					"projectIndex" : 0
 				}
