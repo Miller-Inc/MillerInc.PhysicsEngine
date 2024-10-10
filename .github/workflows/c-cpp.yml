@@ -17,12 +17,12 @@ jobs:
 
       - name: Install CMake
         run: sudo apt-get install cmake
-        
+
       - name: Set up permissions for configure script
         run: chmod +x ./configure
 
-      - name: configure
-        run: ./configure
+      #- name: configure
+      #  run: ./configure
 
       - name: make
         run: make

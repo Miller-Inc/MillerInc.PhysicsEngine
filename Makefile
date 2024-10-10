@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/c/Users/jwmil/MillerInc.GPU/PhysicsEngine
+CMAKE_SOURCE_DIR = ./
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/c/Users/jwmil/MillerInc.GPU/PhysicsEngine
+CMAKE_BINARY_DIR = ./
 
 #=============================================================================
 # Targets provided globally by CMake.
