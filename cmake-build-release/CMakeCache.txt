@@ -251,6 +251,9 @@ PhysicsEngine_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 PhysicsEngine_SOURCE_DIR:STATIC=C:/Users/jwmil/MillerInc.GPU/PhysicsEngine
 
+//The directory containing a CMake configuration file for Qt6.
+Qt6_DIR:PATH=Qt6_DIR-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries

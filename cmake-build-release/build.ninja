@@ -103,6 +103,24 @@ build CMakeFiles/PhysicsEngine.dir/source/PhysicsEngine/Scenes/Scene.cpp.obj: CX
   OBJECT_DIR = CMakeFiles\PhysicsEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PhysicsEngine.dir\source\PhysicsEngine\Scenes
 
+build CMakeFiles/PhysicsEngine.dir/source/Rendering/Windows/CPU/visualizer.cpp.obj: CXX_COMPILER__PhysicsEngine_unscanned_Release C$:/Users/jwmil/MillerInc.GPU/PhysicsEngine/source/Rendering/Windows/CPU/visualizer.cpp || cmake_object_order_depends_target_PhysicsEngine
+  DEP_FILE = CMakeFiles\PhysicsEngine.dir\source\Rendering\Windows\CPU\visualizer.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\PhysicsEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\PhysicsEngine.dir\source\Rendering\Windows\CPU
+
+build CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/Cube.cpp.obj: CXX_COMPILER__PhysicsEngine_unscanned_Release C$:/Users/jwmil/MillerInc.GPU/PhysicsEngine/source/PhysicsObjects/Collidables/SimpleShapes/Cube.cpp || cmake_object_order_depends_target_PhysicsEngine
+  DEP_FILE = CMakeFiles\PhysicsEngine.dir\source\PhysicsObjects\Collidables\SimpleShapes\Cube.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\PhysicsEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\PhysicsEngine.dir\source\PhysicsObjects\Collidables\SimpleShapes
+
+build CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.cpp.obj: CXX_COMPILER__PhysicsEngine_unscanned_Release C$:/Users/jwmil/MillerInc.GPU/PhysicsEngine/source/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.cpp || cmake_object_order_depends_target_PhysicsEngine
+  DEP_FILE = CMakeFiles\PhysicsEngine.dir\source\PhysicsObjects\Collidables\SimpleShapes\FlatSheet.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\PhysicsEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\PhysicsEngine.dir\source\PhysicsObjects\Collidables\SimpleShapes
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target PhysicsEngine
@@ -111,7 +129,7 @@ build CMakeFiles/PhysicsEngine.dir/source/PhysicsEngine/Scenes/Scene.cpp.obj: CX
 #############################################
 # Link the static library libPhysicsEngine.a
 
-build libPhysicsEngine.a: CXX_STATIC_LIBRARY_LINKER__PhysicsEngine_Release CMakeFiles/PhysicsEngine.dir/source/library.cpp.obj CMakeFiles/PhysicsEngine.dir/source/FieldTypes/BaseTypes/Vector3.cpp.obj CMakeFiles/PhysicsEngine.dir/source/FieldTypes/ComplexTypes/Force.cpp.obj CMakeFiles/PhysicsEngine.dir/source/FieldTypes/ComplexTypes/ContactForce.cpp.obj CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/BaseObject.cpp.obj CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/ImpulseObject.cpp.obj CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/CollisionObject.cpp.obj CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/Sphere.cpp.obj CMakeFiles/PhysicsEngine.dir/source/PhysicsEngine/Scenes/Scene.cpp.obj
+build libPhysicsEngine.a: CXX_STATIC_LIBRARY_LINKER__PhysicsEngine_Release CMakeFiles/PhysicsEngine.dir/source/library.cpp.obj CMakeFiles/PhysicsEngine.dir/source/FieldTypes/BaseTypes/Vector3.cpp.obj CMakeFiles/PhysicsEngine.dir/source/FieldTypes/ComplexTypes/Force.cpp.obj CMakeFiles/PhysicsEngine.dir/source/FieldTypes/ComplexTypes/ContactForce.cpp.obj CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/BaseObject.cpp.obj CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/ImpulseObject.cpp.obj CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/CollisionObject.cpp.obj CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/Sphere.cpp.obj CMakeFiles/PhysicsEngine.dir/source/PhysicsEngine/Scenes/Scene.cpp.obj CMakeFiles/PhysicsEngine.dir/source/Rendering/Windows/CPU/visualizer.cpp.obj CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/Cube.cpp.obj CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.cpp.obj
   LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
   OBJECT_DIR = CMakeFiles\PhysicsEngine.dir
   POST_BUILD = cd .

@@ -25,7 +25,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
+				"line" : 8,
 				"parent" : 0
 			}
 		]
@@ -58,7 +58,10 @@
 				12,
 				15,
 				17,
-				19
+				19,
+				20,
+				24,
+				26
 			]
 		}
 	],
@@ -84,7 +87,10 @@
 				12,
 				15,
 				17,
-				19
+				19,
+				20,
+				24,
+				26
 			]
 		},
 		{
@@ -101,7 +107,17 @@
 				13,
 				14,
 				16,
-				18
+				18,
+				21,
+				23,
+				25
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				22
 			]
 		}
 	],
@@ -214,6 +230,44 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "source/PhysicsEngine/Scenes/Scene.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/Rendering/Windows/CPU/visualizer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/Rendering/Windows/CPU/visualizer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/Rendering/Windows/CPU/visualizer.ui",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/PhysicsObjects/Collidables/SimpleShapes/Cube.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/PhysicsObjects/Collidables/SimpleShapes/Cube.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

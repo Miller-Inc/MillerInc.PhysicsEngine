@@ -3,6 +3,8 @@ project(PhysicsEngine)
 
 set(CMAKE_CXX_STANDARD 26)
 
+#find_package(Qt6 REQUIRED COMPONENTS Widgets)
+
 add_library(PhysicsEngine STATIC source/library.cpp
         include/library.h
         include/FullEngineIncludes.h
@@ -22,4 +24,12 @@ add_library(PhysicsEngine STATIC source/library.cpp
         include/PhysicsObjects/Collidables/SimpleShapes/Sphere.h
         source/PhysicsObjects/Collidables/SimpleShapes/Sphere.cpp
         include/PhysicsEngine/Scenes/Scene.h
-        source/PhysicsEngine/Scenes/Scene.cpp)
+        source/PhysicsEngine/Scenes/Scene.cpp
+        source/Rendering/Windows/CPU/visualizer.cpp
+        include/Rendering/Windows/CPU/visualizer.h
+        include/Rendering/Windows/CPU/visualizer.ui
+        include/PhysicsObjects/Collidables/SimpleShapes/Cube.h
+        source/PhysicsObjects/Collidables/SimpleShapes/Cube.cpp
+        include/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.h
+        source/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.cpp
+)
