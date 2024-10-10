@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Check if CMake is installed
+if ! command -v cmake &> /dev/null
+then
+    echo "CMake could not be found. Please install it and try again."
+    exit 1
+fi
+
+# Create a build directory if it doesn't exist
+if [ ! -d "build" ]; then
+  mkdir build
+fi
+
+# Run CMake to configure the project
+cd build
+cmake ..
+if [ $? -ne 0 ]; then
+    echo "CMake configuration failed."
+    exit 1
+fi
+
+echo "Configuration completed successfully."
+exit 0
