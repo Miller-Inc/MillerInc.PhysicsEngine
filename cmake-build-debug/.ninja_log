@@ -1,12 +1,17 @@
 # ninja log v6
-2	281	7501345904988983	CMakeFiles/PhysicsEngine.dir/library.cpp.obj	821c8a27e09c5271
 14	459	7501808498326223	CMakeFiles/PhysicsEngine.dir/source/FieldTypes/ComplexTypes/ContactForce.cpp.obj	a1dc1bce6918165
+2	281	7501345904988983	CMakeFiles/PhysicsEngine.dir/library.cpp.obj	821c8a27e09c5271
 935	1011	7501846734522744	libPhysicsEngine.a	8c29df1dcc8d0255
-5	253	7501846725221601	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/ImpulseObject.cpp.obj	d56add73825c8a2c
 18	460	7501808498356211	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/BaseObject.cpp.obj	764561f891523480
+5	253	7501846725221601	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/ImpulseObject.cpp.obj	d56add73825c8a2c
 10	459	7501808498286211	CMakeFiles/PhysicsEngine.dir/source/FieldTypes/ComplexTypes/Force.cpp.obj	49ea3c7bf59fb513
 2	489	7501808498201391	CMakeFiles/PhysicsEngine.dir/source/library.cpp.obj	fa3f05d9a02b63e7
 14	506	7501846725302094	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/Sphere.cpp.obj	c5467349990476d9
 7	742	7501808498251108	CMakeFiles/PhysicsEngine.dir/source/FieldTypes/BaseTypes/Vector3.cpp.obj	15994291aa91467e
 10	516	7501846725262100	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/CollisionObject.cpp.obj	81c8ff5dc98026c7
 17	935	7501846725342608	CMakeFiles/PhysicsEngine.dir/source/PhysicsEngine/Scenes/Scene.cpp.obj	52a515e3eb0cee6d
+2	186	7503054168209054	build.ninja	52694df9054b90b6
+5	42	7503054168421109	CMakeFiles/PhysicsEngine.dir/source/Rendering/Windows/CPU/visualizer.cpp.obj	f214d8fe255603fe
+8	385	7503054168451112	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/Cube.cpp.obj	ff3239bef9687079
+10	397	7503054168476210	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.cpp.obj	52ba8c37e1d56ebf
+397	495	7503054172342194	libPhysicsEngine.a	f9790bb731e75139
