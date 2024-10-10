@@ -12,7 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    - name: Set up permissions for configure script
+      run: chmod +x ./configure
     - name: configure
       run: ./configure
     - name: make
