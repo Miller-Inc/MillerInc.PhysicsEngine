@@ -22,6 +22,7 @@ public:
     // Variables
     float height;
     float width;
+    Vector3* normalVector{};
 
     // Override Functions
     bool isColliding(CollisionObject* other) override;
@@ -29,6 +30,8 @@ public:
     bool isTouching(CollisionObject* other) override;
 
     Vector3 getClosestPoint(const Vector3& point) override;
+
+    [[nodiscard]] Vector3 getNormalVector() const;
 };
 
 #endif //FLATSHEET_H

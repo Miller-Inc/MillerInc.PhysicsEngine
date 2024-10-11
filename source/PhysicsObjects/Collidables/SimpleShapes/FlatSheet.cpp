@@ -45,3 +45,8 @@ Vector3 FlatSheet::getClosestPoint(const Vector3& point)
 {
     return position;
 }
+
+Vector3 FlatSheet::getNormalVector() const
+{
+    return this->rotation.getNormalVector3();
+}

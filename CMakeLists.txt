@@ -32,4 +32,5 @@ add_library(PhysicsEngine STATIC source/library.cpp
         source/PhysicsObjects/Collidables/SimpleShapes/Cube.cpp
         include/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.h
         source/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.cpp
+        source/FieldTypes/BaseTypes/Quaternion.cpp
 )

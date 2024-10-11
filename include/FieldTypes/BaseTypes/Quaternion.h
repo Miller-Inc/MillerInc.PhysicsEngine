@@ -6,6 +6,7 @@
 #define QUATERNION_H
 
 #pragma once
+#include "Vector3.h"
 
 class Quaternion
 {
@@ -59,6 +60,12 @@ public:
         return conjugate() / (x * x + y * y + z * z + w * w);
     }
 
+    Quaternion* operator*=(const Quaternion& other)
+    {
+        *this = *this * other;
+        return this;
+    }
+
     Quaternion operator+=(const Quaternion& other)
     {
         x += other.x;
@@ -68,7 +75,30 @@ public:
         return *this;
     }
 
+    [[nodiscard]] Quaternion* getNormalVector() const;
 
+    [[nodiscard]] Quaternion* getConjugate() const;
+
+    [[nodiscard]] Quaternion normalize() const;
+
+    [[nodiscard]] float dot(const Quaternion& other) const
+    {
+        return x * other.x + y * other.y + z * other.z + w * other.w;
+    }
+
+    // SLERP
+    [[nodiscard]] Quaternion slerp(const Quaternion& other, float t) const;
+
+    // Rotation
+    [[nodiscard]] Vector3 rotate(const Vector3& v) const;
+
+    // Create a quaternion from an axis and an angle
+    Quaternion fromAxisAngle(const Vector3& axis, float angle);
+
+    // To Axis Angle
+    void toAxisAngle(Vector3& axis, float& angle) const;
+
+    [[nodiscard]] Vector3 getNormalVector3() const;
 
 };
 
