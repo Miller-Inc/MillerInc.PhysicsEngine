@@ -93,7 +93,7 @@ public:
     [[nodiscard]] Vector3 rotate(const Vector3& v) const;
 
     // Create a quaternion from an axis and an angle
-    Quaternion fromAxisAngle(const Vector3& axis, float angle);
+    static Quaternion fromAxisAngle(const Vector3& axis, float angle);
 
     // To Axis Angle
     void toAxisAngle(Vector3& axis, float& angle) const;

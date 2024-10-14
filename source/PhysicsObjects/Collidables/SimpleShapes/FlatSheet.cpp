@@ -27,13 +27,16 @@ FlatSheet::FlatSheet(float height, float width, Vector3 position, float mass) : 
     this->width = width;
     this->position = position;
     this->mass = mass;
+    this->normalVector = new Vector3(0, 0, 1);
+    this->rotation = Quaternion(0, 0, 0, 1);
 }
 
 FlatSheet::~FlatSheet() = default;
 
 bool FlatSheet::isColliding(CollisionObject* other)
 {
-    return false;
+    Vector3 norm = getNormalVector();
+    float t = Vector3(0.0f, 0.0f, 0.0f).distance(this->position);
 }
 
 bool FlatSheet::isTouching(CollisionObject* other)

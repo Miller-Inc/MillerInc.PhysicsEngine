@@ -22,8 +22,8 @@ Quaternion* Quaternion::getConjugate() const
 // Normalization
 Quaternion Quaternion::normalize() const {
     float magnitude = std::sqrt(x * x + y * y + z * z + w * w);
-    if (magnitude == 0) return Quaternion(0, 0, 0, 1); // Return identity quaternion if magnitude is zero
-    return Quaternion(x / magnitude, y / magnitude, z / magnitude, w / magnitude);
+    if (magnitude == 0) return {0, 0, 0, 1}; // Return identity quaternion if magnitude is zero
+    return {x / magnitude, y / magnitude, z / magnitude, w / magnitude};
 }
 
 // Slerp (Spherical Linear Interpolation)
@@ -47,7 +47,7 @@ Vector3 Quaternion::rotate(const Vector3& v) const {
 Quaternion Quaternion::fromAxisAngle(const Vector3& axis, float angle) {
     float halfAngle = angle / 2.0f;
     float s = std::sin(halfAngle);
-    return Quaternion(axis.x * s, axis.y * s, axis.z * s, std::cos(halfAngle));
+    return {axis.x * s, axis.y * s, axis.z * s, std::cos(halfAngle)};
 }
 
 // To Axis-Angle

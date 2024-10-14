@@ -22,7 +22,7 @@ public:
     // Variables
     float height;
     float width;
-    Vector3* normalVector{};
+    Vector3* normalVector;
 
     // Override Functions
     bool isColliding(CollisionObject* other) override;
