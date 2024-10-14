@@ -35,8 +35,8 @@ FlatSheet::~FlatSheet() = default;
 
 bool FlatSheet::isColliding(CollisionObject* other)
 {
-    Vector3 norm = getNormalVector();
-    float t = Vector3(0.0f, 0.0f, 0.0f).distance(this->position);
+    // TODO: Implement this function
+    return false;
 }
 
 bool FlatSheet::isTouching(CollisionObject* other)
@@ -46,7 +46,12 @@ bool FlatSheet::isTouching(CollisionObject* other)
 
 Vector3 FlatSheet::getClosestPoint(const Vector3& point)
 {
-    return position;
+
+    Vector3 norm = getNormalVector();
+    float t = Vector3(0.0f, 0.0f, 0.0f).distance(this->position) -
+        point.x * norm.x - point.y * norm.y - this->position.z * point.z;
+
+    return {point.x + t * norm.x, point.y + t * norm.y, point.z + t * norm.z};
 }
 
 Vector3 FlatSheet::getNormalVector() const
