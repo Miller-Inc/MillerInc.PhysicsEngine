@@ -10,7 +10,7 @@
 7	742	7501808498251108	CMakeFiles/PhysicsEngine.dir/source/FieldTypes/BaseTypes/Vector3.cpp.obj	15994291aa91467e
 10	516	7501846725262100	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/CollisionObject.cpp.obj	81c8ff5dc98026c7
 17	935	7501846725342608	CMakeFiles/PhysicsEngine.dir/source/PhysicsEngine/Scenes/Scene.cpp.obj	52a515e3eb0cee6d
-2	186	7503791094833047	build.ninja	52694df9054b90b6
+2	186	7506265760000000	build.ninja	52694df9054b90b6
 5	42	7503054168421109	CMakeFiles/PhysicsEngine.dir/source/Rendering/Windows/CPU/visualizer.cpp.obj	f214d8fe255603fe
 8	385	7503054168451112	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/Cube.cpp.obj	ff3239bef9687079
 10	397	7503054168476210	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.cpp.obj	52ba8c37e1d56ebf
