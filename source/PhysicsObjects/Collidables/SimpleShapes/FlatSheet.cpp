@@ -48,8 +48,9 @@ Vector3 FlatSheet::getClosestPoint(const Vector3& point)
 {
 
     Vector3 norm = getNormalVector();
-    float t = Vector3(0.0f, 0.0f, 0.0f).distance(this->position) -
-        point.x * norm.x - point.y * norm.y - this->position.z * point.z;
+    float t = (Vector3(0.0f, 0.0f, 0.0f).distance(this->position) -
+        point.x * norm.x - point.y * norm.y - this->position.z * point.z)
+        / (norm.x * norm.x + norm.y * norm.y + norm.z * norm.z);
 
     return {point.x + t * norm.x, point.y + t * norm.y, point.z + t * norm.z};
 }

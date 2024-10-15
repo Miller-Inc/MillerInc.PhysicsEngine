@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.22"
@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "",
 			"projects" : 
 			[
 				{
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "PhysicsEngine::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-PhysicsEngine-Debug-77bde6ec5be1cd390655.json",
+					"jsonFile" : "target-PhysicsEngine-d1579ebe12292041d81a.json",
 					"name" : "PhysicsEngine",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/Programs/Files/Serviced Nuget Packages/Physics/CPP/MillerInc.PhysicsEngine/cmake-build-debug",
-		"source" : "D:/Programs/Files/Serviced Nuget Packages/Physics/CPP/MillerInc.PhysicsEngine"
+		"build" : "C:/Users/jwmil/MillerInc.GPU/PhysicsEngine/cmake-build-default",
+		"source" : "C:/Users/jwmil/MillerInc.GPU/PhysicsEngine"
 	},
 	"version" : 
 	{

@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/Programs/Files/Serviced Nuget Packages/Physics/CPP/MillerInc.PhysicsEngine/cmake-build-release",
-		"source" : "D:/Programs/Files/Serviced Nuget Packages/Physics/CPP/MillerInc.PhysicsEngine"
+		"build" : "C:/Users/jwmil/MillerInc.GPU/PhysicsEngine/cmake-build-release",
+		"source" : "C:/Users/jwmil/MillerInc.GPU/PhysicsEngine"
 	},
 	"version" : 
 	{
