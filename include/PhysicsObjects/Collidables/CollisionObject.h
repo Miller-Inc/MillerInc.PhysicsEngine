@@ -35,6 +35,10 @@ public:
     void ApplyTorqueImpulse(const Vector3& impulse, const Vector3& position, const Vector3& axis) override;
     void step(float timeStep) override;
 
+    void rotate(Quaternion rotation) override;
+
+    void rotate(float degrees, Vector3 axis) override;
+
     void AddForce(const Force& force)
     {
         forces.push_back(force);

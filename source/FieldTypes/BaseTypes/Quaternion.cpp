@@ -20,8 +20,8 @@ Quaternion* Quaternion::getConjugate() const
 }
 
 // Normalization
-Quaternion Quaternion::normalize() const {
-    float magnitude = std::sqrt(x * x + y * y + z * z + w * w);
+[[nodiscard]] Quaternion Quaternion::normalize() const {
+    const float magnitude = std::sqrt(x * x + y * y + z * z + w * w);
     if (magnitude == 0) return {0, 0, 0, 1}; // Return identity quaternion if magnitude is zero
     return {x / magnitude, y / magnitude, z / magnitude, w / magnitude};
 }
@@ -38,9 +38,9 @@ Quaternion Quaternion::slerp(const Quaternion& other, float t) const {
 
 // Rotation
 Vector3 Quaternion::rotate(const Vector3& v) const {
-    Quaternion qv(v.x, v.y, v.z, 0);
+    const Quaternion qv(v.x, v.y, v.z, 0);
     Quaternion result = *this * qv * inverse();
-    return Vector3(result.x, result.y, result.z);
+    return {result.x, result.y, result.z};
 }
 
 // From Axis-Angle
@@ -52,7 +52,7 @@ Quaternion Quaternion::fromAxisAngle(const Vector3& axis, float angle) {
 
 // To Axis-Angle
 void Quaternion::toAxisAngle(Vector3& axis, float& angle) const {
-    if (w > 1) normalize(); // Normalize if w is greater than 1
+    if (w > 1) this->normalize(); // Normalize if w is greater than 1
     angle = 2 * std::acos(w);
     float s = std::sqrt(1 - w * w); // Assuming quaternion is normalized
     if (s < 0.001) { // To avoid division by zero

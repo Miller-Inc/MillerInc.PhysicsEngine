@@ -24,6 +24,12 @@ public:
     float width;
     Vector3* normalVector;
 
+private:
+    // Variables:
+    Vector3 topRight, topLeft, bottomRight, bottomLeft;
+
+
+public:
     // Override Functions
     bool isColliding(CollisionObject* other) override;
 
@@ -32,6 +38,12 @@ public:
     Vector3 getClosestPoint(const Vector3& point) override;
 
     [[nodiscard]] Vector3 getNormalVector() const;
+
+    void setNormalVector(Vector3* normalVector);
+
+    void rotate(Quaternion rotation) override;
+
+    void rotate(float degrees, Vector3 axis) override;
 };
 
 #endif //FLATSHEET_H

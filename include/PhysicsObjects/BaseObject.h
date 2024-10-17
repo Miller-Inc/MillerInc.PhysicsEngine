@@ -37,6 +37,10 @@ public:
     virtual void step(float timeStep); // Step function for the object with a time step
 
     virtual std::string toString() = 0; // Function to return a string representation of the object
+
+    virtual void rotate(Quaternion rotation) = 0; // Function to rotate the object
+
+    virtual void rotate(float degrees, Vector3 axis) = 0; // Function to rotate the object by a certain number of degrees around an axis
 };
 
 #endif //BASEOBJECT_H

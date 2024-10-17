@@ -105,3 +105,13 @@ bool CollisionObject::isTouching(CollisionObject* other)
 {
     return (other->position == this->position);
 }
+
+void CollisionObject::rotate(Quaternion rotation)
+{
+    this->rotation = this->rotation * rotation * this->rotation.conjugate();
+}
+
+void CollisionObject::rotate(float degrees, Vector3 axis)
+{
+    this->rotate(Quaternion::fromAxisAngle(axis, degrees));
+}
