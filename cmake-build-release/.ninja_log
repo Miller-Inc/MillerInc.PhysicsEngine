@@ -15,3 +15,12 @@
 1322	1392	7506574252193855	libPhysicsEngine.a	f613e509e313e778
 10	577	7506581614682214	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.cpp.obj	35ab2ad8dc1d9c2
 578	644	7506581620358590	libPhysicsEngine.a	f613e509e313e778
+16	601	7508994824119421	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/ImpulseObject.cpp.obj	5fa51c4e3d94a1c
+12	602	7508994824079328	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/BaseObject.cpp.obj	c5e161e4fc6d70e5
+48	670	7508994824436177	CMakeFiles/PhysicsEngine.dir/source/FieldTypes/BaseTypes/Quaternion.cpp.obj	6d78959888ec47ac
+30	696	7508994824264523	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/Cube.cpp.obj	230477351713112f
+19	793	7508994824149412	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/CollisionObject.cpp.obj	5b1b517f1fb1133f
+35	941	7508994824305536	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.cpp.obj	35ab2ad8dc1d9c2
+22	947	7508994824174465	CMakeFiles/PhysicsEngine.dir/source/PhysicsObjects/Collidables/SimpleShapes/Sphere.cpp.obj	d7946fd8e76f583d
+27	1361	7508994824224527	CMakeFiles/PhysicsEngine.dir/source/PhysicsEngine/Scenes/Scene.cpp.obj	a751695944f02d7
+1361	1433	7508994837564695	libPhysicsEngine.a	f613e509e313e778
