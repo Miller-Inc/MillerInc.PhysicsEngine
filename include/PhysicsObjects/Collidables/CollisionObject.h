@@ -27,6 +27,15 @@ public:
     virtual bool isTouching(CollisionObject* other);
     virtual Vector3 getClosestPoint(const Vector3& point);
 
+    bool isCollidable() override
+    {
+        return true;
+    }
+
+    bool operator==(const CollisionObject& collision_object) const {
+        return velocity == collision_object.velocity && position == collision_object.position && rotation == collision_object.rotation && angularVelocity == collision_object.angularVelocity && mass == collision_object.mass;
+    }
+
     void ApplyImpulse(const Vector3& impulse, const Vector3& position) override;
     void ApplyAngularImpulse(const Quaternion& impulse) override;
     void ApplyImpulse(const Vector3& impulse) override;

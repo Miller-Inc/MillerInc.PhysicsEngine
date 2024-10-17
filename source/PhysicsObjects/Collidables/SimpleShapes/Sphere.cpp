@@ -4,6 +4,8 @@
 
 #include "../../../../include/PhysicsObjects/Collidables/SimpleShapes/Sphere.h"
 
+#include <iostream>
+
 // Constructors
 Sphere::Sphere() : Sphere(1.0f)
 {
@@ -48,72 +50,101 @@ Sphere::Sphere(float radius, float mass, float friction, const Vector3& position
 void Sphere::ApplyImpulse(const Vector3& impulse)
 {
     // Implementation
+    // TODO: Implement this method
 }
 
 void Sphere::ApplyImpulse(const Vector3& impulse, const Vector3& position)
 {
     // Implementation
+    // TODO: Implement this method
 }
 
 void Sphere::ApplyAngularImpulse(const Quaternion& impulse)
 {
     // Implementation
+    //  TODO: Implement this method
 }
 
 void Sphere::ApplyTorqueImpulse(const Vector3& impulse)
 {
     // Implementation
+    // TODO: Implement this method
 }
 
 void Sphere::ApplyTorqueImpulse(const Vector3& impulse, const Vector3& position)
 {
     // Implementation
+    // TODO: Implement this method
 }
 
 void Sphere::ApplyTorqueImpulse(const Vector3& impulse, const Vector3& position, const Vector3& axis)
 {
     // Implementation
+    // TODO: Implement this method
 }
 
 void Sphere::OnCollision(CollisionObject* other)
 {
     // Implementation
+    // TODO: Implement this method
 }
 
 void Sphere::OnSeparation(CollisionObject* other)
 {
     // Implementation
+    // TODO: Implement this method
 }
 
 void Sphere::OnContact(CollisionObject* other)
 {
     // Implementation
+    // TODO: Implement this method
 }
 
+/// <summary>
+///     Gets the string representation of the sphere
+/// </summary>
 std::string Sphere::toString()
 {
     return this->name + " position: " + position.toString() + " Velocity: " +
         velocity.toString() + " Mass: " + std::to_string(mass) + " Radius " + std::to_string(radius);
 }
 
+/// <summary>
+///     Check if the sphere is colliding with the other object
+/// </summary>
 bool Sphere::isColliding(CollisionObject* other)
 {
-    if (other->getClosestPoint(this->position).distance(this->position) < this->radius)
+    const Vector3 cP = this->getClosestPoint(other->position);
+    const Vector3 oCP = other->getClosestPoint(cP);
+
+    if ((cP - oCP).magnitude() < this->radius)
     {
         return true;
     }
     return false;
 }
 
+/// <summary>
+///   Check if the sphere is touching the other object
+/// </summary>
 bool Sphere::isTouching(CollisionObject* other)
 {
     return Sphere::isColliding(other);
 }
 
+/// <summary>
+///    Get the closest point on the sphere's surface to the given point
+/// </summary>
 Vector3 Sphere::getClosestPoint(const Vector3& point)
 {
     // Step 1: Calculate the direction vector from the sphere's center to the point
     Vector3 direction = point - this->position;
+
+    if (direction.magnitude() == 0)
+    {
+        return point;
+    }
 
     // Step 2: Normalize the direction vector
     direction = direction / direction.magnitude();

@@ -53,10 +53,10 @@ void CollisionObject::ApplyTorqueImpulse(const Vector3& impulse, const Vector3& 
 /// <summary>
 /// Moves from this
 /// </summary>
-void CollisionObject::step(float timeStep)
+void CollisionObject::step(const float timeStep)
 {
-    Vector3 acceleration = Vector3(0, 0, 0);
-    for (auto& force : forces)
+    auto acceleration = Vector3(0, 0, 0);
+    for (const auto& force : forces)
     {
         acceleration += force.force / mass;
     }
@@ -109,12 +109,12 @@ bool CollisionObject::isTouching(CollisionObject* other)
     return (other->position == this->position);
 }
 
-void CollisionObject::rotate(Quaternion rotation)
+void CollisionObject::rotate(const Quaternion rotation)
 {
     this->rotation = this->rotation * rotation * this->rotation.conjugate();
 }
 
-void CollisionObject::rotate(float degrees, Vector3 axis)
+void CollisionObject::rotate(const float degrees, const Vector3 axis)
 {
     this->rotate(Quaternion::fromAxisAngle(axis, degrees));
 }

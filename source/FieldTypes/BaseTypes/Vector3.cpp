@@ -5,6 +5,7 @@
 #include "../../../include/FieldTypes/BaseTypes/Vector3.h"
 
 #include <cmath>
+#include <complex>
 
 // Constructors Section
 Vector3::Vector3(float x, float y, float z)
@@ -68,7 +69,7 @@ Vector3& Vector3::operator*=(float scalar)
 
 bool Vector3::operator==(const Vector3& other) const
 {
-    return x - other.x < 0.0001f && y - other.y < 0.0001f && z - other.z < 0.0001f;
+    return std::fabs(x - other.x) < 0.0000001f && std::fabs(y - other.y) < 0.0000001f && std::fabs(z - other.z) < 0.0000001f;
 }
 
 Vector3 Vector3::cross(const Vector3& other) const

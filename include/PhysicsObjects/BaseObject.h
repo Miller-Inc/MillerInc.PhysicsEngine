@@ -19,6 +19,12 @@ public:
     BaseObject(Vector3 position, Vector3 velocity, Quaternion rotation, float mass);
 
     virtual ~BaseObject() = default;
+
+    virtual bool isCollidable()
+    {
+        return false; // Returns false if the object is not collidable
+    };
+
     Vector3 position;
 
     Vector3 velocity;
@@ -41,6 +47,11 @@ public:
     virtual void rotate(Quaternion rotation) = 0; // Function to rotate the object
 
     virtual void rotate(float degrees, Vector3 axis) = 0; // Function to rotate the object by a certain number of degrees around an axis
+
+    virtual bool equals(BaseObject* other)
+    {
+        return position == other->position && (velocity == other->velocity) && (rotation == other->rotation) && (angularVelocity == other->angularVelocity) && (mass == other->mass);
+    }
 };
 
 #endif //BASEOBJECT_H

@@ -20,7 +20,7 @@ BaseObject::BaseObject(Vector3 position, Vector3 velocity, Quaternion rotation, 
 }
 
 
-void BaseObject::step(float timeStep)
+void BaseObject::step(const float timeStep)
 {
     position += velocity * timeStep;
 }

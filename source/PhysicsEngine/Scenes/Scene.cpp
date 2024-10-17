@@ -50,21 +50,35 @@ void Scene::main(float time, bool print)
 std::vector<CollisionObject*> Scene::getCollisions(CollisionObject* object)
 {
     std::vector<CollisionObject*> collisions;
-    for (auto& collisionObject : collisionObjects)
+
+    for (auto collisionObject : collisionObjects)
     {
-        if (object->isColliding(&collisionObject))
+        if ((*object == *collisionObject) == false)
         {
-            collisions.push_back(&collisionObject);
+            if (object->isColliding(collisionObject))
+            {
+                collisions.push_back(collisionObject);
+            }
         }
     }
+
     return collisions;
 }
 
 void Scene::step(float timestep)
 {
-    for (auto& object : sceneObjects)
+    for (auto* object : sceneObjects)
     {
         object->step(timestep);
+    }
+}
+
+void Scene::AddObject(BaseObject* object)
+{
+    sceneObjects.push_back(object);
+    if (object->isCollidable())
+    {
+        collisionObjects.push_back(dynamic_cast<CollisionObject*>(object));
     }
 }
 

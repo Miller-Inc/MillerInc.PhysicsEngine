@@ -6,6 +6,8 @@
 #define QUATERNION_H
 
 #pragma once
+#include <complex>
+
 #include "Vector3.h"
 
 class Quaternion
@@ -91,6 +93,10 @@ public:
 
     // Rotation
     [[nodiscard]] Vector3 rotate(const Vector3& v) const;
+    bool operator==(const Quaternion& quaternion) const
+    {
+        return std::fabs(x - quaternion.x) < 0.0000001f && std::fabs(y - quaternion.y) < 0.0000001f && std::fabs(z - quaternion.z) < 0.0000001f && std::fabs(w - quaternion.w) < 0.0000001f;
+    };
 
     // Create a quaternion from an axis and an angle
     static Quaternion fromAxisAngle(const Vector3& axis, float angle);
