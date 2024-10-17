@@ -5,6 +5,7 @@
 #include "../../../include/FieldTypes/BaseTypes/Quaternion.h"
 #include <cmath>
 #include <bits/algorithmfwd.h>
+#include <algorithm>
 
 
 Quaternion* Quaternion::getNormalVector() const
@@ -68,3 +69,9 @@ Vector3 Quaternion::getNormalVector3() const
     if (magnitude == 0) return {0, 0, 0}; // Handle zero magnitude case
     return {x / magnitude, y / magnitude, z / magnitude};
 }
+
+std::string Quaternion::toString() const
+{
+    return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ", " + std::to_string(w) + ")";
+}
+

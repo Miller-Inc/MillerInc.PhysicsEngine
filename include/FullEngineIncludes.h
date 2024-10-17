@@ -27,6 +27,8 @@
 
             // Simple Shapes
             #include "PhysicsObjects/Collidables/SimpleShapes/Sphere.h"
+            #include "PhysicsObjects/Collidables/SimpleShapes/Cube.h"
+            #include "PhysicsObjects/Collidables/SimpleShapes/FlatSheet.h"
 
     // Scene Types
     #include "PhysicsEngine/Scenes/Scene.h"

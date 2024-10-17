@@ -12,6 +12,7 @@ CollisionObject::CollisionObject()
     angularVelocity = Quaternion(0, 0, 0, 0);
     forces = std::vector<Force>();
     overlappingObjects = std::vector<CollisionObject*>();
+    currentMomentum = velocity * mass;
 }
 
 
@@ -46,6 +47,8 @@ void CollisionObject::ApplyTorqueImpulse(const Vector3& impulse, const Vector3& 
 void CollisionObject::ApplyTorqueImpulse(const Vector3& impulse, const Vector3& position, const Vector3& axis)
 {
 }
+
+
 
 /// <summary>
 /// Moves from this
@@ -114,4 +117,10 @@ void CollisionObject::rotate(Quaternion rotation)
 void CollisionObject::rotate(float degrees, Vector3 axis)
 {
     this->rotate(Quaternion::fromAxisAngle(axis, degrees));
+}
+
+std::string CollisionObject::toString()
+{
+    return "CollisionObject: Position: " + position.toString() +
+        "; Rotation: " + rotation.toString();
 }

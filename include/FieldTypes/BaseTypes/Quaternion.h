@@ -100,6 +100,8 @@ public:
 
     [[nodiscard]] Vector3 getNormalVector3() const;
 
+    [[nodiscard]] std::string toString() const;
+
 };
 
 

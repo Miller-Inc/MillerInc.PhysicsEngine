@@ -33,11 +33,14 @@ public:
     void ApplyTorqueImpulse(const Vector3& impulse) override;
     void ApplyTorqueImpulse(const Vector3& impulse, const Vector3& position) override;
     void ApplyTorqueImpulse(const Vector3& impulse, const Vector3& position, const Vector3& axis) override;
+
     void step(float timeStep) override;
 
     void rotate(Quaternion rotation) override;
 
     void rotate(float degrees, Vector3 axis) override;
+
+    std::string toString() override;
 
     void AddForce(const Force& force)
     {
