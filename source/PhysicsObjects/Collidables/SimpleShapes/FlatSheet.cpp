@@ -40,6 +40,10 @@ FlatSheet::FlatSheet(float height, float width, Vector3* position, float mass) :
     // Set the rotation of the sheet
     this->normalVector = new Vector3(0, 0, 1);
     this->rotation = new Quaternion(0, 0, 0, 1);
+
+
+    this->name = "Flat Sheet " + std::to_string(fSCount());
+    incrementFS();
 }
 
 FlatSheet::~FlatSheet() = default;

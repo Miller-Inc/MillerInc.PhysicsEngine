@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include "FlatSheet.h"
 #include "../CollisionObject.h"
 
 
@@ -17,6 +18,20 @@ public:
     // Constructors
     Cube();
     explicit Cube(float sideLength);
+
+    std::string name = "Cube ";
+    static int cubeCount();
+
+    static void incrementCube();
+    static int cubeCounter;
+
+    // Cube faces
+    FlatSheet* top;
+    FlatSheet* bottom;
+    FlatSheet* left;
+    FlatSheet* right;
+    FlatSheet* front;
+    FlatSheet* back;
 
     // Destructors
     ~Cube() override;
@@ -31,7 +46,18 @@ public:
 
     Vector3 getClosestPoint(const Vector3& point) override;
 
+    [[nodiscard]] Quaternion getRotation() const;
 
+    void rotate(Quaternion rotation) override;
+
+    void rotate(float degrees, Vector3 axis) override;
+
+    std::string toString() override;
+
+    void step(float timeStep) override;
+
+private:
+    [[nodiscard]] FlatSheet* getClosestPlane(const Vector3& point) const;
 };
 
 #endif //CUBE_H
