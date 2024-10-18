@@ -10,6 +10,30 @@
 class Force
 {
 public:
+
+    // Constants:
+    static Vector3 EARTHGRAVITY()
+    {
+        return {0.0f, -9.81f, 0.0f};
+    }
+
+    static Vector3 GRAVITATIONALCONSTANT()
+    {
+        return {0.0f, -6.67430e-11f, 0.0f};
+    }
+
+    static Force Gravity(const float mass1, const float mass2, const float distance)
+    {
+        Vector3 force = GRAVITATIONALCONSTANT() * (mass1 * mass2) / (distance * distance);
+        return { force, -1.0f};
+    }
+
+    static Force Gravity(const float mass)
+    {
+        Vector3 force = EARTHGRAVITY() * mass;
+        return { force, -1.0f };
+    }
+
     virtual ~Force() = default;
     Vector3 force;
 
