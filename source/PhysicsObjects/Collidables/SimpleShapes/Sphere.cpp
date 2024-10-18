@@ -49,14 +49,16 @@ Sphere::Sphere(float radius, float mass, float friction, const Vector3& position
 // Methods
 void Sphere::ApplyImpulse(const Vector3& impulse)
 {
-    // Implementation
-    // TODO: Implement this method
+    ApplyImpulse(impulse, *position);
 }
 
 void Sphere::ApplyImpulse(const Vector3& impulse, const Vector3& position)
 {
-    // Implementation
-    // TODO: Implement this method
+    this->velocity = new Vector3(*velocity + impulse / mass);
+    this->currentMomentum = new Vector3(velocity->x * mass, velocity->y * mass,
+        velocity->z * mass);
+
+    // TODO: Finish this method
 }
 
 void Sphere::ApplyAngularImpulse(const Quaternion& impulse)

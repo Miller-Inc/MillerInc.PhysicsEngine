@@ -25,6 +25,8 @@ public:
         return false; // Returns false if the object is not collidable
     };
 
+    int calculationLOD = 20; // Level of detail for calculations
+
     Vector3* position;
 
     Vector3* velocity;

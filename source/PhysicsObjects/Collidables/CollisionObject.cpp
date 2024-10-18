@@ -31,10 +31,31 @@ Vector3* CollisionObject::getClosestPoint(const Vector3* point)
 
 void CollisionObject::ApplyImpulse(const Vector3& impulse, const Vector3& position)
 {
+    // I need to review the math here for both angular and linear momentum
+
 }
 
 void CollisionObject::ApplyImpulse(const Vector3* impulse)
 {
+    ApplyImpulse(*impulse, *position);
+}
+
+void CollisionObject::ApplyImpulse(CollisionObject* other)
+{
+    if (isColliding(other))
+    {
+        // Apply impulse
+        Vector3 cpO = other->getClosestPoint(*position);
+        Vector3 cp = getClosestPoint(cpO);
+        for (int i = 0; i < calculationLOD; i++)
+        {
+            cp = getClosestPoint(cpO);
+            cpO = other->getClosestPoint(cp);
+        }
+        Vector3 normal = cp - cpO;
+
+
+    }
 }
 
 void CollisionObject::ApplyAngularImpulse(const Quaternion& impulse)

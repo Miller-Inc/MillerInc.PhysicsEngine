@@ -45,6 +45,8 @@ public:
 
     void ApplyImpulse(const Vector3& impulse, const Vector3& position) override;
     void ApplyImpulse(const Vector3* impulse) override;
+    void ApplyImpulse(CollisionObject* other);
+
     void ApplyAngularImpulse(const Quaternion& impulse) override;
     void ApplyImpulse(const Vector3& impulse) override;
     void ApplyTorqueImpulse(const Vector3& impulse) override;
