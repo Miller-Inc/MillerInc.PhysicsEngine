@@ -51,10 +51,12 @@ std::vector<CollisionObject*> Scene::getCollisions(CollisionObject* object)
 {
     std::vector<CollisionObject*> collisions;
 
-    for (auto collisionObject : collisionObjects)
+    for (auto* collisionObject : collisionObjects)
     {
-        if ((*object == *collisionObject) == false)
+        if ((object == collisionObject) == false)
         {
+            std::cout << "Checking " << object->name << " against " << collisionObject->name << "\n";
+
             if (object->isColliding(collisionObject))
             {
                 collisions.push_back(collisionObject);
@@ -65,10 +67,8 @@ std::vector<CollisionObject*> Scene::getCollisions(CollisionObject* object)
     return collisions;
 }
 
-void Scene::step(float timestep)
-{
-    for (auto* object : sceneObjects)
-    {
+void Scene::step(float timestep) {
+    for (auto* object : sceneObjects) {
         object->step(timestep);
     }
 }

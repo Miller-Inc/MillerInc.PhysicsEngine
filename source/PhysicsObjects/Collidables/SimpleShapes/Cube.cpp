@@ -21,3 +21,13 @@ bool Cube::isColliding(CollisionObject* other)
 
 }
 
+bool Cube::isTouching(CollisionObject* other)
+{
+
+}
+
+Vector3 Cube::getClosestPoint(const Vector3& point)
+{
+
+}
+

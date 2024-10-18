@@ -17,6 +17,12 @@ public:
 
     CollisionObject();
 
+    std::string name = "Collision Object ";
+    static int collObjCount();
+
+    static void incrementCollisionObjs();
+    static int objCounter;
+
     std::vector<CollisionObject*> overlappingObjects;
 
     virtual void OnCollision(CollisionObject* other);
@@ -26,6 +32,7 @@ public:
     virtual bool isColliding(CollisionObject* other);
     virtual bool isTouching(CollisionObject* other);
     virtual Vector3 getClosestPoint(const Vector3& point);
+    virtual Vector3* getClosestPoint(const Vector3* point);
 
     bool isCollidable() override
     {
@@ -37,6 +44,7 @@ public:
     }
 
     void ApplyImpulse(const Vector3& impulse, const Vector3& position) override;
+    void ApplyImpulse(const Vector3* impulse) override;
     void ApplyAngularImpulse(const Quaternion& impulse) override;
     void ApplyImpulse(const Vector3& impulse) override;
     void ApplyTorqueImpulse(const Vector3& impulse) override;
@@ -57,6 +65,8 @@ public:
     }
 
     std::vector<Force> forces;
+
+    bool equals(BaseObject* other) override;
 
 };
 

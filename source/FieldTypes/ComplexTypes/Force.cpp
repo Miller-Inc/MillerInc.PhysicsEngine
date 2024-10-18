@@ -3,7 +3,7 @@
 //
 #include "../../../include/FieldTypes/ComplexTypes/Force.h"
 
-Vector3 Force::get_force() const
+Vector3* Force::get_force() const
 {
     return force;
 }

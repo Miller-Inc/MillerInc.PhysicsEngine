@@ -3,7 +3,7 @@
 //
 #include "../../../include/FieldTypes/ComplexTypes/ContactForce.h"
 
-Vector3 ContactForce::get_force() const
+Vector3* ContactForce::get_force() const
 {
-    return torque();
+    return force;
 }

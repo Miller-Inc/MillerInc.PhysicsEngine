@@ -16,7 +16,7 @@ public:
     BaseObject(); // Constructor for the object
 
     // Constructor for the object with a position, velocity, rotation, and mass
-    BaseObject(Vector3 position, Vector3 velocity, Quaternion rotation, float mass);
+    BaseObject(Vector3* position, Vector3* velocity, Quaternion* rotation, float mass);
 
     virtual ~BaseObject() = default;
 
@@ -25,13 +25,13 @@ public:
         return false; // Returns false if the object is not collidable
     };
 
-    Vector3 position;
+    Vector3* position;
 
-    Vector3 velocity;
+    Vector3* velocity;
 
-    Quaternion rotation;
+    Quaternion* rotation;
 
-    Quaternion angularVelocity;
+    Quaternion* angularVelocity;
 
     float mass{}; // Mass of the object
 

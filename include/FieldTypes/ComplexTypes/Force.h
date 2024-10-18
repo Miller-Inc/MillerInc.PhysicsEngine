@@ -22,24 +22,24 @@ public:
         return {0.0f, -6.67430e-11f, 0.0f};
     }
 
-    static Force Gravity(const float mass1, const float mass2, const float distance)
+    static Force* Gravity(const float mass1, const float mass2, const float distance)
     {
         Vector3 force = GRAVITATIONALCONSTANT() * (mass1 * mass2) / (distance * distance);
-        return { force, -1.0f};
+        return new Force( &force, -1.0f);
     }
 
-    static Force Gravity(const float mass)
+    static Force* Gravity(const float mass)
     {
-        Vector3 force = EARTHGRAVITY() * mass;
-        return { force, -1.0f };
+        Vector3 force = (EARTHGRAVITY() * mass);
+        return new Force( &force, -1.0f );
     }
 
     virtual ~Force() = default;
-    Vector3 force;
+    Vector3* force;
 
     float timeRemaining;
 
-    explicit Force(Vector3 force) : Force(force, 0.0f)
+    explicit Force(Vector3* force) : Force(force, 0.0f)
     {
         this->force = force;
     }
@@ -48,7 +48,7 @@ public:
     ///     Main Constructor, creates a force with a given force and time applied,
     ///     if time applied is negative, the force is applied indefinitely
     /// </summary>
-    Force(const Vector3 force, const float timeApplied)
+    Force(Vector3* force, const float timeApplied)
     {
         this->force = force;
         this->timeRemaining = timeApplied;
@@ -58,7 +58,7 @@ public:
         }
     }
 
-    [[nodiscard]] virtual Vector3 get_force() const;
+    [[nodiscard]] virtual Vector3* get_force() const;
 
     /// <summary>
     ///     Steps the force by a given timestep

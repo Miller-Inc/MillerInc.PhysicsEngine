@@ -34,8 +34,8 @@ Sphere::Sphere(float radius, float mass, const Vector3& position, const Vector3&
     this->useFriction = false;
     this->radius = radius;
     this->mass = mass;
-    this->position = position;
-    this->velocity = velocity;
+    this->position = new Vector3(position);
+    this->velocity = new Vector3(velocity);
     this->forces = std::vector<Force>();
     this->name = "Sphere " + std::to_string(sphereCount());
     incrementSpheres();
@@ -106,8 +106,8 @@ void Sphere::OnContact(CollisionObject* other)
 /// </summary>
 std::string Sphere::toString()
 {
-    return this->name + " position: " + position.toString() + " Velocity: " +
-        velocity.toString() + " Mass: " + std::to_string(mass) + " Radius " + std::to_string(radius);
+    return this->name + " position: " + position->toString() + " Velocity: " +
+        velocity->toString() + " Mass: " + std::to_string(mass) + " Radius " + std::to_string(radius);
 }
 
 /// <summary>
@@ -115,8 +115,13 @@ std::string Sphere::toString()
 /// </summary>
 bool Sphere::isColliding(CollisionObject* other)
 {
-    const Vector3 cP = this->getClosestPoint(other->position);
-    const Vector3 oCP = other->getClosestPoint(cP);
+    Vector3 cP = this->getClosestPoint(*other->position);
+    Vector3 oCP = other->getClosestPoint(cP);
+    cP = this->getClosestPoint(oCP);
+    oCP = other->getClosestPoint(cP);
+
+    std::cout << "Sphere: " << this->name << " Closest Point: " << cP.toString() << std::endl;
+    std::cout << "Other: " << other->name << " Closest Point: " << oCP.toString() << std::endl;
 
     if ((cP - oCP).magnitude() < this->radius)
     {
@@ -139,7 +144,7 @@ bool Sphere::isTouching(CollisionObject* other)
 Vector3 Sphere::getClosestPoint(const Vector3& point)
 {
     // Step 1: Calculate the direction vector from the sphere's center to the point
-    Vector3 direction = point - this->position;
+    auto direction = Vector3(point - this->position);
 
     if (direction.magnitude() == 0)
     {
@@ -153,7 +158,7 @@ Vector3 Sphere::getClosestPoint(const Vector3& point)
     direction = direction * this->radius;
 
     // Step 4: Add the scaled vector to the sphere's center to get the closest point
-    Vector3 closestPoint = this->position + direction;
+    Vector3 closestPoint = *this->position + direction;
 
     return closestPoint;
 }

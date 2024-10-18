@@ -6,18 +6,25 @@
 
 CollisionObject::CollisionObject()
 {
-    position = Vector3(0, 0, 0);
-    velocity = Vector3(0, 0, 0);
+    position = new Vector3(0, 0, 0);
+    velocity = new Vector3(0, 0, 0);
     mass = 1.0f;
-    angularVelocity = Quaternion(0, 0, 0, 0);
+    angularVelocity = new Quaternion(0, 0, 0, 0);
     forces = std::vector<Force>();
     overlappingObjects = std::vector<CollisionObject*>();
-    currentMomentum = velocity * mass;
+    currentMomentum = new Vector3(velocity->x * mass, velocity->y * mass, velocity->z * mass);
+    this->name = name + std::to_string(collObjCount());
+    incrementCollisionObjs();
 }
 
 
 
 Vector3 CollisionObject::getClosestPoint(const Vector3& point)
+{
+    return *position;
+}
+
+Vector3* CollisionObject::getClosestPoint(const Vector3* point)
 {
     return position;
 }
@@ -26,14 +33,18 @@ void CollisionObject::ApplyImpulse(const Vector3& impulse, const Vector3& positi
 {
 }
 
+void CollisionObject::ApplyImpulse(const Vector3* impulse)
+{
+}
+
 void CollisionObject::ApplyAngularImpulse(const Quaternion& impulse)
 {
-    this->angularVelocity += impulse / mass;
+    this->angularVelocity = new Quaternion(*this->angularVelocity + impulse / mass);
 }
 
 void CollisionObject::ApplyImpulse(const Vector3& impulse)
 {
-    this->velocity += impulse / mass;
+    this->velocity = new Vector3(*this->velocity + impulse / mass);
 }
 
 void CollisionObject::ApplyTorqueImpulse(const Vector3& impulse)
@@ -58,7 +69,7 @@ void CollisionObject::step(const float timeStep)
     auto acceleration = Vector3(0, 0, 0);
     for (const auto& force : forces)
     {
-        acceleration += force.force / mass;
+        acceleration += *force.force / mass;
     }
 
     for (int i = 0; i < forces.size(); i++)
@@ -71,9 +82,16 @@ void CollisionObject::step(const float timeStep)
         }
     }
 
-    velocity += acceleration * timeStep;
+    velocity = new Vector3(*velocity + Vector3(acceleration * timeStep));
 
-    position += velocity * timeStep;
+    // Update position based on velocity and time step
+    this->position = new Vector3(*this->position + *this->velocity * timeStep);
+
+    // Update rotation based on angular velocity and time step
+    this->rotation = new Quaternion(*this->rotation * *this->angularVelocity  * this->rotation->conjugate() * timeStep);
+
+    // Normalize the rotation quaternion
+    this->rotation = this->rotation->normalizeP();
 
 }
 
@@ -111,7 +129,7 @@ bool CollisionObject::isTouching(CollisionObject* other)
 
 void CollisionObject::rotate(const Quaternion rotation)
 {
-    this->rotation = this->rotation * rotation * this->rotation.conjugate();
+    this->rotation = new Quaternion(*this->rotation * rotation * this->rotation->conjugate());
 }
 
 void CollisionObject::rotate(const float degrees, const Vector3 axis)
@@ -121,6 +139,32 @@ void CollisionObject::rotate(const float degrees, const Vector3 axis)
 
 std::string CollisionObject::toString()
 {
-    return "CollisionObject: Position: " + position.toString() +
-        "; Rotation: " + rotation.toString();
+    return this->name + " position: " + position->toString() + " Velocity: " +
+        velocity->toString() + " Mass: " + std::to_string(mass);
+}
+
+int CollisionObject::collObjCount()
+{
+    return objCounter;
+}
+
+void CollisionObject::incrementCollisionObjs()
+{
+    objCounter++;
+}
+
+int CollisionObject::objCounter = 0;
+
+bool CollisionObject::equals(BaseObject* other)
+{
+    auto otherCollisionObject = dynamic_cast<CollisionObject*>(other);
+    if (otherCollisionObject == nullptr)
+    {
+        return false;
+    }
+    return this->position == otherCollisionObject->position &&
+        this->velocity == otherCollisionObject->velocity &&
+        this->rotation == otherCollisionObject->rotation &&
+        this->angularVelocity == otherCollisionObject->angularVelocity &&
+        this->mass == otherCollisionObject->mass && this->name == otherCollisionObject->name;
 }
