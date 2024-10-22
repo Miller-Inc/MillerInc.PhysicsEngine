@@ -6,6 +6,8 @@
 #include <ctime>
 #include <iostream>
 
+bool Scene::debugMode = false;
+
 void Scene::main()
 {
     sceneRunning = true;
@@ -39,9 +41,12 @@ void Scene::main(float time, bool print)
         if (print)
         {
             std::cout << "Time: " << currentTime << " Delta Time: " << deltaTime <<"\n";
-            for (auto& object : sceneObjects)
+            if (debugMode)
             {
-                std::cout << object->toString() << "\n";
+                for (auto& object : sceneObjects)
+                {
+                    std::cout << object->toString() << "\n";
+                }
             }
         }
     }

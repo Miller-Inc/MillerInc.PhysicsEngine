@@ -16,6 +16,11 @@
 // Complex Types
 #include "FieldTypes/ComplexTypes/Force.h"
 #include "FieldTypes/ComplexTypes/ContactForce.h"
+#include "FieldTypes/ComplexTypes/PosVariableForce.h"
+    // Position Forces
+    #include "FieldTypes/ComplexTypes/PositionForces/GravityForce.h"
+    #include "FieldTypes/ComplexTypes/PositionForces/SpringForce.h"
+    #include "FieldTypes/ComplexTypes/PositionForces/DragForce.h"
 
 // Physics Engine
     // Object Types

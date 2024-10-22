@@ -15,7 +15,22 @@ class Scene
 {
 public:
 
-    Scene() = default;
+    static bool debug()
+    {
+        return debugMode;
+    }
+
+    static void setDebug(const bool debug)
+    {
+        debugMode = debug;
+    }
+
+    static bool debugMode;
+
+    Scene()
+    {
+        debugMode = false;
+    }
 
     std::vector<BaseObject*> sceneObjects;
 

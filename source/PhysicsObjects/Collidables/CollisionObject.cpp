@@ -3,7 +3,7 @@
 //
 
 #include "../../../include/PhysicsObjects/Collidables/CollisionObject.h"
-
+#include "../../../include/PhysicsEngine/Scenes/Scene.h"
 #include <iostream>
 
 CollisionObject::CollisionObject()
@@ -93,14 +93,11 @@ void CollisionObject::step(const float timeStep)
     Vector3 acceleration(0, 0, 0);
     for (const auto force : forces)
     {
-        // Debug: Print force value
-        std::cout << "Force: " << force->force->toString() << std::endl;
+        if (Scene::debug())
+            // Debug: Print force value
+            std::cout << "Force: " << force->force->toString() << std::endl;
         acceleration += *force->force / mass;
     }
-
-    // Debug: Print acceleration
-    std::cout << "Acceleration: " << acceleration.toString() << std::endl;
-
     // Update forces
     for (int i = 0; i < forces.size(); i++)
     {
@@ -119,22 +116,10 @@ void CollisionObject::step(const float timeStep)
         *velocity += acceleration * timeStep;
     }
 
-    // Debug: Print velocity
-    if (velocity)
-    {
-        std::cout << "Velocity: " << velocity->toString() << std::endl;
-    }
-
     // Update position based on velocity and time step
     if (position && velocity)
     {
         *position += *velocity * timeStep;
-    }
-
-    // Debug: Print position
-    if (position)
-    {
-        std::cout << "Position: " << position->toString() << std::endl;
     }
 
     // Update rotation based on angular velocity and time step, only if angular velocity is non-zero
@@ -143,12 +128,6 @@ void CollisionObject::step(const float timeStep)
         Quaternion deltaRotation = Quaternion(angularVelocity->x * timeStep, angularVelocity->y * timeStep, angularVelocity->z * timeStep, 0);
         deltaRotation = deltaRotation * *rotation;
         *rotation = (*rotation + deltaRotation * 0.5f).normalize();
-    }
-
-    // Debug: Print rotation
-    if (rotation)
-    {
-        std::cout << "Rotation: " << rotation->toString() << std::endl;
     }
 }
 

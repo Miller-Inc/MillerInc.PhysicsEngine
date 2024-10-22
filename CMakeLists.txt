@@ -36,4 +36,8 @@ add_library(PhysicsEngine STATIC source/library.cpp
         include/FieldTypes/ComplexTypes/PosVariableForce.h
         include/FieldTypes/ComplexTypes/PositionForces/GravityForce.h
         source/FieldTypes/ComplexTypes/PositionForces/GravityForce.cpp
+        include/FieldTypes/ComplexTypes/PositionForces/SpringForce.h
+        include/FieldTypes/ComplexTypes/PositionForces/DragForce.h
+        source/FieldTypes/ComplexTypes/PositionForces/DragForce.cpp
+        source/FieldTypes/ComplexTypes/PositionForces/SpringForce.cpp
 )

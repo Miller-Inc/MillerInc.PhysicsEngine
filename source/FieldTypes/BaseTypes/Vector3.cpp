@@ -140,6 +140,17 @@ float Vector3::length() const
     return magnitude();
 }
 
+Vector3 Vector3::normalize()
+{
+    const float len = magnitude();
+    if (len > 0) {
+        x /= len;
+        y /= len;
+        z /= len;
+    }
+    return *this;
+}
+
 float Vector3::magnitude() const {
     return std::sqrt(x * x + y * y + z * z);
 }
