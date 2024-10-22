@@ -180,7 +180,7 @@ void FlatSheet::rotate(float degrees, Vector3 axis)
 /// </summary>
 std::string FlatSheet::toString()
 {
-    return this->name + "at " + this->position->toString() + " with a height of " + std::to_string(this->height) +
+    return this->name + " at " + this->position->toString() + " with a height of " + std::to_string(this->height) +
         " meters and a width of " + std::to_string(this->width) + " meters and a mass of " + std::to_string(this->mass)
         + " kg";
 }

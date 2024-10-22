@@ -24,14 +24,16 @@ public:
 
     static Force* Gravity(const float mass1, const float mass2, const float distance)
     {
-        Vector3 force = GRAVITATIONALCONSTANT() * (mass1 * mass2) / (distance * distance);
-        return new Force( &force, -1.0f);
+        const Vector3 g = GRAVITATIONALCONSTANT();
+        auto* force = new Vector3(g.x * (mass1 * mass2) / (distance * distance), g.y * (mass1 * mass2) / (distance * distance), g.z * (mass1 * mass2) / (distance * distance));
+        return new Force(force, -1.0f);
     }
 
     static Force* Gravity(const float mass)
     {
-        Vector3 force = (EARTHGRAVITY() * mass);
-        return new Force( &force, -1.0f );
+        const Vector3 g = EARTHGRAVITY();
+        auto* force = new Vector3(g.x * mass, g.y * mass, g.z * mass);
+        return new Force(force, -1.0f );
     }
 
     virtual ~Force() = default;

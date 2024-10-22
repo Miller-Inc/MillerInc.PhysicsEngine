@@ -7,6 +7,7 @@
 #pragma once
 #include "ImpulseObject.h"
 #include <functional>
+#include <iostream>
 #include <vector>
 
 #include "../../FieldTypes/ComplexTypes/Force.h"
@@ -66,10 +67,17 @@ public:
         forces.push_back(force);
     }
 
+    void AddForce(const Force* force)
+    {
+        std::cout << force->force->toString() << std::endl;
+        forces.push_back(*force);
+    }
+
     std::vector<Force> forces;
 
     bool equals(BaseObject* other) override;
 
+    ~CollisionObject() override;
 };
 
 #endif //COLLISIONOBJECT_H

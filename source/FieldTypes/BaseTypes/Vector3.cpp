@@ -135,6 +135,11 @@ float Vector3::distance(const Vector3& other) const {
     return diff.magnitude();
 }
 
+float Vector3::length() const
+{
+    return magnitude();
+}
+
 float Vector3::magnitude() const {
     return std::sqrt(x * x + y * y + z * z);
 }

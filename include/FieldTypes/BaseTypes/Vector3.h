@@ -48,6 +48,7 @@ public:
     [[nodiscard]] float magnitude() const;
     [[nodiscard]] float distance(const Vector3* other) const;
     [[nodiscard]] float distance(const Vector3& other) const;
+    float length() const;
     static Vector3 cross(const Vector3* a, const Vector3* b);
     static Vector3 cross(const Vector3& a, const Vector3& b);
     [[nodiscard]] float dot(const Vector3* other) const;

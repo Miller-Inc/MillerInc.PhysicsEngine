@@ -33,4 +33,7 @@ add_library(PhysicsEngine STATIC source/library.cpp
         include/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.h
         source/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.cpp
         source/FieldTypes/BaseTypes/Quaternion.cpp
+        include/FieldTypes/ComplexTypes/PosVariableForce.h
+        include/FieldTypes/ComplexTypes/PositionForces/GravityForce.h
+        source/FieldTypes/ComplexTypes/PositionForces/GravityForce.cpp
 )

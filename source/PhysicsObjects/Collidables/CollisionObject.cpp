@@ -4,6 +4,8 @@
 
 #include "../../../include/PhysicsObjects/Collidables/CollisionObject.h"
 
+#include <iostream>
+
 CollisionObject::CollisionObject()
 {
     position = new Vector3(0, 0, 0);
@@ -85,14 +87,23 @@ void CollisionObject::ApplyTorqueImpulse(const Vector3& impulse, const Vector3& 
 /// <summary>
 /// Moves from this
 /// </summary>
+#include <iostream>
+
 void CollisionObject::step(const float timeStep)
 {
-    auto acceleration = Vector3(0, 0, 0);
+    // Calculate acceleration
+    Vector3 acceleration(0, 0, 0);
     for (const auto& force : forces)
     {
+        // Debug: Print force value
+        std::cout << "Force: " << force.force->toString() << std::endl;
         acceleration += *force.force / mass;
     }
 
+    // Debug: Print acceleration
+    std::cout << "Acceleration: " << acceleration.toString() << std::endl;
+
+    // Update forces
     for (int i = 0; i < forces.size(); i++)
     {
         forces[i].step(timeStep);
@@ -103,17 +114,43 @@ void CollisionObject::step(const float timeStep)
         }
     }
 
-    velocity = new Vector3(*velocity + Vector3(acceleration * timeStep));
+    // Update velocity based on acceleration and time step
+    if (velocity)
+    {
+        *velocity += acceleration * timeStep;
+    }
+
+    // Debug: Print velocity
+    if (velocity)
+    {
+        std::cout << "Velocity: " << velocity->toString() << std::endl;
+    }
 
     // Update position based on velocity and time step
-    this->position = new Vector3(*this->position + *this->velocity * timeStep);
+    if (position && velocity)
+    {
+        *position += *velocity * timeStep;
+    }
 
-    // Update rotation based on angular velocity and time step
-    this->rotation = new Quaternion(*this->rotation * *this->angularVelocity  * this->rotation->conjugate() * timeStep);
+    // Debug: Print position
+    if (position)
+    {
+        std::cout << "Position: " << position->toString() << std::endl;
+    }
 
-    // Normalize the rotation quaternion
-    this->rotation = this->rotation->normalizeP();
+    // Update rotation based on angular velocity and time step, only if angular velocity is non-zero
+    if (angularVelocity && (angularVelocity->x != 0 || angularVelocity->y != 0 || angularVelocity->z != 0))
+    {
+        Quaternion deltaRotation = Quaternion(angularVelocity->x * timeStep, angularVelocity->y * timeStep, angularVelocity->z * timeStep, 0);
+        deltaRotation = deltaRotation * *rotation;
+        *rotation = (*rotation + deltaRotation * 0.5f).normalize();
+    }
 
+    // Debug: Print rotation
+    if (rotation)
+    {
+        std::cout << "Rotation: " << rotation->toString() << std::endl;
+    }
 }
 
 void CollisionObject::OnSeparation(CollisionObject* other)
@@ -189,3 +226,14 @@ bool CollisionObject::equals(BaseObject* other)
         this->angularVelocity == otherCollisionObject->angularVelocity &&
         this->mass == otherCollisionObject->mass && this->name == otherCollisionObject->name;
 }
+
+CollisionObject::~CollisionObject()
+{
+    delete position;
+    delete velocity;
+    delete angularVelocity;
+    delete currentMomentum;
+    delete rotation;
+}
+
+// Created by James Miller on 10/8/2024.
