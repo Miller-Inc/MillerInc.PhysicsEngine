@@ -65,7 +65,7 @@ public:
     /// <summary>
     ///     Steps the force by a given timestep
     /// </summary>
-    void step(float timeStep)
+    virtual void step(float timeStep)
     {
         if (continuous)
         {
@@ -75,6 +75,13 @@ public:
     }
 
     bool continuous;
+
+    [[nodiscard]] virtual bool isVariableForce() const
+    {
+        return variable;
+    }
+
+    const bool variable = false;
 };
 
 #endif //FORCE_H

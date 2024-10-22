@@ -12,7 +12,7 @@ CollisionObject::CollisionObject()
     velocity = new Vector3(0, 0, 0);
     mass = 1.0f;
     angularVelocity = new Quaternion(0, 0, 0, 0);
-    forces = std::vector<Force>();
+    forces = std::vector<Force*>();
     overlappingObjects = std::vector<CollisionObject*>();
     currentMomentum = new Vector3(velocity->x * mass, velocity->y * mass, velocity->z * mass);
     this->name = name + std::to_string(collObjCount());
@@ -87,17 +87,15 @@ void CollisionObject::ApplyTorqueImpulse(const Vector3& impulse, const Vector3& 
 /// <summary>
 /// Moves from this
 /// </summary>
-#include <iostream>
-
 void CollisionObject::step(const float timeStep)
 {
     // Calculate acceleration
     Vector3 acceleration(0, 0, 0);
-    for (const auto& force : forces)
+    for (const auto force : forces)
     {
         // Debug: Print force value
-        std::cout << "Force: " << force.force->toString() << std::endl;
-        acceleration += *force.force / mass;
+        std::cout << "Force: " << force->force->toString() << std::endl;
+        acceleration += *force->force / mass;
     }
 
     // Debug: Print acceleration
@@ -106,12 +104,13 @@ void CollisionObject::step(const float timeStep)
     // Update forces
     for (int i = 0; i < forces.size(); i++)
     {
-        forces[i].step(timeStep);
-        if (forces[i].timeRemaining <= 0 && !forces[i].continuous)
+        forces[i]->step(timeStep);
+        if (forces[i]->timeRemaining <= 0 && !forces[i]->continuous)
         {
             forces.erase(forces.begin() + i);
             i--; // Decrement i to account for the fact that the vector has been resized
         }
+
     }
 
     // Update velocity based on acceleration and time step
@@ -139,7 +138,7 @@ void CollisionObject::step(const float timeStep)
     }
 
     // Update rotation based on angular velocity and time step, only if angular velocity is non-zero
-    if (angularVelocity && (angularVelocity->x != 0 || angularVelocity->y != 0 || angularVelocity->z != 0))
+    if (angularVelocity && (angularVelocity->x != 0 || angularVelocity->y != 0 || angularVelocity->z != 0) && rotation)
     {
         Quaternion deltaRotation = Quaternion(angularVelocity->x * timeStep, angularVelocity->y * timeStep, angularVelocity->z * timeStep, 0);
         deltaRotation = deltaRotation * *rotation;

@@ -64,16 +64,16 @@ public:
 
     void AddForce(const Force& force)
     {
-        forces.push_back(force);
+        forces.push_back(new Force(force));
     }
 
     void AddForce(const Force* force)
     {
         std::cout << force->force->toString() << std::endl;
-        forces.push_back(*force);
+        forces.push_back(new Force(*force));
     }
 
-    std::vector<Force> forces;
+    std::vector<Force*> forces;
 
     bool equals(BaseObject* other) override;
 

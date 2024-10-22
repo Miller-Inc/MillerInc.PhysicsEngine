@@ -36,7 +36,7 @@ Sphere::Sphere(float radius, float mass, const Vector3& position, const Vector3&
     this->mass = mass;
     this->position = new Vector3(position);
     this->velocity = new Vector3(velocity);
-    this->forces = std::vector<Force>();
+    this->forces = std::vector<Force*>();
     this->name = "Sphere " + std::to_string(sphereCount());
     incrementSpheres();
 }
