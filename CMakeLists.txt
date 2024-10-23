@@ -40,4 +40,7 @@ add_library(PhysicsEngine STATIC source/library.cpp
         include/FieldTypes/ComplexTypes/PositionForces/DragForce.h
         source/FieldTypes/ComplexTypes/PositionForces/DragForce.cpp
         source/FieldTypes/ComplexTypes/PositionForces/SpringForce.cpp
+        include/Rendering/Shared/GPU/NVIDIA/GPUScene.h
+        source/Rendering/Shared/GPU/NVIDIA/GPUScene.cpp
+        include/Rendering/Shared/GPU/NVIDIA/gpu_kernels.cu
 )
