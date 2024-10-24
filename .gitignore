@@ -6,3 +6,14 @@ cmake-build-default/
 cmake-build-release/
 cmake-build-default/*
 cmake-build-release/*
+/.cmake
+/cmake-build-debug-visual-studio
+/cmake-build-release-wsl
+/CMakeFiles
+/CMakeFiles
+/Debug
+/PhysicsEngine.dir
+/PhysicsEngineGPU.dir
+/x64
+/CMake
+/cmake-build-release-visual-studio

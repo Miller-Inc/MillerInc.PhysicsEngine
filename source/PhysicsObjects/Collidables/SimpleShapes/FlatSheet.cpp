@@ -4,6 +4,7 @@
 
 #include "../../../../include/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.h"
 
+#include <algorithm>
 #include <cmath>
 #include <iostream>
 

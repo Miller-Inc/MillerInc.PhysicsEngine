@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\jwmil\MillerInc.GPU\PhysicsEngine\source\Rendering\Shared\GPU\NVIDIA\GPUScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\jwmil\MillerInc.GPU\PhysicsEngine\include\Rendering\Shared\GPU\NVIDIA\gpu_kernels.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="include\Rendering\Shared\GPU\NVIDIA\gpu_kernels.cu">
+      <Filter>Source Files</Filter>
+    </CudaCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\jwmil\MillerInc.GPU\PhysicsEngine\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{D3823B6F-82E6-3A92-815B-6835B081AEEE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{CC32E45B-18EF-38DE-8814-6C208BAFD1AA}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

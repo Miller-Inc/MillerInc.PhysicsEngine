@@ -4,7 +4,6 @@
 
 #include "../../../include/FieldTypes/BaseTypes/Quaternion.h"
 #include <cmath>
-#include <bits/algorithmfwd.h>
 #include <algorithm>
 
 

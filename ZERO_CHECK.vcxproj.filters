@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\jwmil\MillerInc.GPU\PhysicsEngine\CMakeFiles\fa1024fb9bf1079ae8e33aa9f96bf7e5\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E9712423-0F4F-3748-BC86-4BB7E20E1EFD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
