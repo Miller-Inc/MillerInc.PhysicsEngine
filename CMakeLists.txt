@@ -5,26 +5,26 @@ set(CMAKE_CXX_STANDARD 23) # C++23
 
 
 # Find CUDAToolkit
-find_package(CUDAToolkit REQUIRED)
+#find_package(CUDAToolkit REQUIRED)
 
-set(CMAKE_CUDA_FLAGS "-G -g")
+#set(CMAKE_CUDA_FLAGS "-G -g")
 
-include_directories(${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES})
+#include_directories(${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES})
 
-set(CUDA_SOURCES
-        include/Rendering/Shared/GPU/NVIDIA/gpu_kernels.cu
-        source/Rendering/Shared/GPU/NVIDIA/GPUScene.cpp
-        include/Rendering/Shared/GPU/NVIDIA/gpu_kernels.h
-)
+#set(CUDA_SOURCES
+#        include/Rendering/Shared/GPU/NVIDIA/gpu_kernels.cu
+#        source/Rendering/Shared/GPU/NVIDIA/GPUScene.cpp
+#        include/Rendering/Shared/GPU/NVIDIA/gpu_kernels.h
+#)
 
 # Add CUDA source files to the library
-add_library(PhysicsEngineGPU STATIC ${CUDA_SOURCES})
+#add_library(PhysicsEngineGPU STATIC ${CUDA_SOURCES})
 
 # Link against CUDA runtime
-target_link_libraries(PhysicsEngineGPU CUDA::cudart)
+#target_link_libraries(PhysicsEngineGPU CUDA::cudart)
 
 # Link against CUDA runtime
-target_link_libraries(PhysicsEngineGPU CUDA::cudart)
+#target_link_libraries(PhysicsEngineGPU CUDA::cudart)
 
 add_library(PhysicsEngine STATIC
         source/library.cpp

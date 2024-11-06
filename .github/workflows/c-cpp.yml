@@ -18,8 +18,8 @@ jobs:
       - name: Install CMake
         run: sudo apt-get install cmake
 
-      - name: Install CUDA
-        run: sudo apt-get install nvidia-cuda-toolkit
+#      - name: Install CUDA
+#        run: sudo apt-get install nvidia-cuda-toolkit
 
       - name: Set up permissions for configure script
         run: chmod +x ./configure
