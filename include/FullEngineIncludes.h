@@ -12,6 +12,7 @@
 // Base Types
 #include "FieldTypes/BaseTypes/Vector3.h"
 #include "FieldTypes/BaseTypes/Quaternion.h"
+#include "FieldTypes/BaseTypes/Vector3Math.h"
 
 // Complex Types
 #include "FieldTypes/ComplexTypes/Force.h"
