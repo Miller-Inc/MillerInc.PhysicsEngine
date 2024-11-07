@@ -17,3 +17,5 @@ cmake-build-release/*
 /x64
 /CMake
 /cmake-build-release-visual-studio
+build/
+build/*
