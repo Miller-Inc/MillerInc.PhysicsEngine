@@ -20,12 +20,34 @@ Note that not all of these features are implemented yet, but they are planned
 To install the library, you can download the repository and add the library to your project.
 ### To Use in C++ Projects
 1. Clone the repository
-2. Add the `include` folder to your project
-3. Include the header files in your project, simple include statement:
+2. Build this project with CMAKE
+   1. Enter the repository directory and create a build directory
+       ~~~ shell 
+            cd MillerInc.PhysicsEngine
+            mkdir build
+            cd build
+       ~~~
+   2. Run the following commands to build the project:
+      ~~~ shell
+      cmake ..
+      make
+      ~~~
+      This will result in a library being built in the `build` directory with the name `libPhysicsEngine.a`
+   3. You can now include the library in your project by including the header files in your project as well as the library
+   4. To include the library in your project, you can add the following line to your CMakeLists.txt file:
+      ~~~ CMAKE
+      target_link_libraries(your_project_name /path/to/MillerInc.PhysicsEngine/build/libPhysicsEngine.a)
+      add_subdirectory(/path/to/MillerInc.PhysicsEngine/include)
+      ~~~
+      Replace `your_project_name` with the name of your project and `/path/to/MillerInc.PhysicsEngine/build/libPhysicsEngine.a` with the path to the library you built
+3. Add the `include` folder to your project directory
+4. If you have a GPU with CUDA support, you should copy the GPU directory 
+to your project directory as well and build this repository with the GPU enabled
+5. Include the header files in your project, simple include statement:
    ~~~ C++
         #include "include/FullEngineIncludes.h"
    ~~~
-4. Reference any classes or functions from the library in your project
+6. Reference any classes or functions from the library in your project
 
 ### For Use in Console, Desktop, or Mobile Applications
 1. Clone the repository
