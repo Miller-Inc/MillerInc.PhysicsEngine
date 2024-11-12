@@ -22,6 +22,8 @@ public:
     }; // Copy constructor
     Vector3(); // Default constructor
 
+    std::byte* toBytes() const;
+
     // Pointer-based Operators Section
     Vector3* operator+(const Vector3* other) const;
     Vector3* operator-(const Vector3* other) const;

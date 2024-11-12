@@ -35,6 +35,8 @@ public:
     virtual Vector3 getClosestPoint(const Vector3& point);
     virtual Vector3* getClosestPoint(const Vector3* point);
 
+    virtual std::byte *toBytes();
+
     bool isCollidable() override
     {
         return true;
@@ -76,6 +78,7 @@ public:
     std::vector<Force*> forces;
 
     bool equals(BaseObject* other) override;
+    [[nodiscard]] bool equals(const CollisionObject& other) const;
 
     ~CollisionObject() override;
 };

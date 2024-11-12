@@ -31,6 +31,17 @@ Vector3* CollisionObject::getClosestPoint(const Vector3* point)
     return position;
 }
 
+std::byte* CollisionObject::toBytes()
+{
+    std::byte bytes[100];
+    position->toBytes();
+    velocity->toBytes();
+    angularVelocity->toBytes();
+
+
+    return bytes;
+}
+
 void CollisionObject::ApplyImpulse(const Vector3& impulse, const Vector3& position)
 {
     // I need to review the math here for both angular and linear momentum
@@ -203,6 +214,18 @@ bool CollisionObject::equals(BaseObject* other)
         this->rotation == otherCollisionObject->rotation &&
         this->angularVelocity == otherCollisionObject->angularVelocity &&
         this->mass == otherCollisionObject->mass && this->name == otherCollisionObject->name;
+}
+
+bool CollisionObject::equals(const CollisionObject& other) const
+{
+    const auto otherCollisionObject = CollisionObject(other);
+
+    return this->position == otherCollisionObject.position &&
+        this->velocity == otherCollisionObject.velocity &&
+        this->rotation == otherCollisionObject.rotation &&
+        this->angularVelocity == otherCollisionObject.angularVelocity &&
+        this->mass == otherCollisionObject.mass &&
+        this->name == otherCollisionObject.name;
 }
 
 CollisionObject::~CollisionObject()

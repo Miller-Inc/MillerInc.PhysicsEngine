@@ -7,11 +7,31 @@
 
 #if CUDA_AVAILABLE
 
+#define INCREMENT 128
+
 #include "../../include/PhysicsEngine/Scenes/Scene.h"
+#include "../../include/PhysicsObjects/Collidables/CollisionObject.h"
 
 class GPUScene {
 public:
-    static void runSceneOnGPU(Scene* scene);
+    GPUScene();
+    ~GPUScene();
+
+    void addCollisionObject(CollisionObject* object);
+    void removeCollisionObject(CollisionObject* object);
+
+    [[nodiscard]] int getNumCollisionObjects() const;
+
+protected:
+    CollisionObject* *collisionObjects;
+    int numCollisionObjects, currentLength;
+
+    void enlargeCollisionObjectsArray();
+    void shrinkCollisionObjectsArray();
+
+
+public:
+    int* removeIndex; // Index of object to remove
 };
 
 #endif

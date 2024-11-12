@@ -5,6 +5,15 @@
 Vector3::Vector3(float x, float y, float z) : x(x), y(y), z(z) {}
 Vector3::Vector3() : Vector3(0, 0, 0) {}
 
+std::byte* Vector3::toBytes() const
+{
+    std::byte bytes[96];
+    bytes[0] = static_cast<std::byte>(x);
+    bytes[32] = static_cast<std::byte>(y);
+    bytes[64] = static_cast<std::byte>(z);
+    return bytes;
+}
+
 // Pointer-based Operators Section
 Vector3* Vector3::operator+(const Vector3* other) const {
     return new Vector3(x + other->x, y + other->y, z + other->z);
