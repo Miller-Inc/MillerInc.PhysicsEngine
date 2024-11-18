@@ -22,7 +22,7 @@ public:
     }; // Copy constructor
     Vector3(); // Default constructor
 
-    std::byte* toBytes() const;
+    [[nodiscard]] std::byte* toBytes() const;
 
     // Pointer-based Operators Section
     Vector3* operator+(const Vector3* other) const;
@@ -59,6 +59,12 @@ public:
     static float dot(const Vector3* a, const Vector3* b);
     static float dot(const Vector3& a, const Vector3& b);
     [[nodiscard]] std::string toString() const;
+
+    [[nodiscard]] static int sizeOf()
+    {
+        return 3 * sizeof(float);
+    }
+
 };
 
 #endif // VECTOR3_H

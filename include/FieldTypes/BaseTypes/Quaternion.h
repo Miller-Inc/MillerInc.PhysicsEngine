@@ -147,6 +147,13 @@ public:
 
     [[nodiscard]] std::string toString() const;
 
+    [[nodiscard]] std::byte *toBytes() const;
+
+    [[nodiscard]] static int sizeOf()
+    {
+        return sizeof(float) * 4;
+    }
+
 };
 
 

@@ -18,12 +18,12 @@ public:
     ~GPUScene();
 
     void addCollisionObject(CollisionObject* object);
-    void removeCollisionObject(CollisionObject* object);
+    void removeCollisionObject(const CollisionObject* object);
 
     [[nodiscard]] int getNumCollisionObjects() const;
 
 protected:
-    CollisionObject* *collisionObjects;
+    CollisionObject collisionObjects[128];
     int numCollisionObjects, currentLength;
 
     void enlargeCollisionObjectsArray();

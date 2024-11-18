@@ -91,6 +91,16 @@ std::string Quaternion::toString() const
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ", " + std::to_string(w) + ")";
 }
 
+std::byte* Quaternion::toBytes() const
+{
+    auto* bytes = new std::byte[sizeof(float) * 4];
+    std::memcpy(bytes, &x, sizeof(float));
+    std::memcpy(bytes + sizeof(float), &y, sizeof(float));
+    std::memcpy(bytes + 2 * sizeof(float), &z, sizeof(float));
+    std::memcpy(bytes + 3 * sizeof(float), &w, sizeof(float));
+    return bytes;
+}
+
 Quaternion Quaternion::getConjugate() const
 {
     return {-x, -y, -z, w};

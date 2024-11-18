@@ -35,7 +35,7 @@ public:
     virtual Vector3 getClosestPoint(const Vector3& point);
     virtual Vector3* getClosestPoint(const Vector3* point);
 
-    virtual std::byte *toBytes();
+    [[nodiscard]] virtual std::byte *toBytes() const;
 
     bool isCollidable() override
     {
@@ -79,6 +79,12 @@ public:
 
     bool equals(BaseObject* other) override;
     [[nodiscard]] bool equals(const CollisionObject& other) const;
+
+    [[nodiscard]] static int byteLength()
+    {
+        return 2 * Vector3::sizeOf() + 2 * Quaternion::sizeOf()
+        + static_cast<int>(sizeof(float));
+    }
 
     ~CollisionObject() override;
 };

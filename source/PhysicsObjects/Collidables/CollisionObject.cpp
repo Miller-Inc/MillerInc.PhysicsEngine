@@ -31,13 +31,27 @@ Vector3* CollisionObject::getClosestPoint(const Vector3* point)
     return position;
 }
 
-std::byte* CollisionObject::toBytes()
+std::byte* CollisionObject::toBytes() const
 {
-    std::byte bytes[100];
-    position->toBytes();
-    velocity->toBytes();
-    angularVelocity->toBytes();
+    auto* bytes = new std::byte[CollisionObject::byteLength()];
+    int currentIndex = 0;
+    memcpy(bytes, position->toBytes(), Vector3::sizeOf());
 
+    currentIndex += Vector3::sizeOf();
+
+    memcpy(bytes + currentIndex, velocity->toBytes(), Vector3::sizeOf());
+
+    currentIndex += Vector3::sizeOf();
+
+    memcpy(bytes + currentIndex, rotation->toBytes(), Quaternion::sizeOf());
+
+    currentIndex += Quaternion::sizeOf();
+
+    memcpy(bytes + currentIndex, angularVelocity->toBytes(), Quaternion::sizeOf());
+
+    currentIndex += Quaternion::sizeOf();
+
+    memcpy(bytes + currentIndex, &mass, sizeof(float));
 
     return bytes;
 }
