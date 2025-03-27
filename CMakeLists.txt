@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(PhysicsEngine LANGUAGES CXX)
+project(PhysicsEngine LANGUAGES CXX CUDA)
 
 set(CMAKE_CXX_STANDARD 23) # C++23
 
@@ -27,34 +27,25 @@ if (CUDAToolkit_FOUND)
     message(STATUS "CUDA libraries: ${CUDAToolkit_LIBRARIES}")
     message(STATUS "CUDA version: ${CUDAToolkit_VERSION}")
 
-    set(HAS_CUDA TRUE)
-
     if(${CUDAToolkit_VERSION} VERSION_LESS "12.0")
         message(STATUS ${CUDAToolkit_VERSION})
         message(WARNING "This project requires CUDA Toolkit 12.0 or higher.")
-        set(HAS_CUDA FALSE)
     else()
         message(STATUS "CUDA Toolkit version is compatible")
 
         message(STATUS "Enabling CUDA")
-
-        enable_language(CUDA)
         add_definitions(-DCUDA_AVAILABLE=true)
         enable_language(CUDA)
-    endif()
 
+        set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -gencode arch=compute_75,code=sm_75")
+        set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -gencode arch=compute_86,code=sm_86")
+        set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --expt-relaxed-constexpr")
+        set(CMAKE_CUDA_COMPILE_OBJECT "${CMAKE_CUDA_COMPILE_OBJECT} -gencode arch=compute_75,code=sm_75")
+        set(CMAKE_CUDA_COMPILE_OBJECT "${CMAKE_CUDA_COMPILE_OBJECT} -gencode arch=compute_86,code=sm_86")
+        set(CMAKE_CUDA_COMPILE_OBJECT "${CMAKE_CUDA_COMPILE_OBJECT} --expt-relaxed-constexpr")
+    endif()
 else()
     message(STATUS "CUDA not found")
-    set(HAS_CUDA FALSE)
-endif()
-
-if (HAS_CUDA)
-    set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -gencode arch=compute_75,code=sm_75")
-    set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -gencode arch=compute_86,code=sm_86")
-    set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --expt-relaxed-constexpr")
-    set(CMAKE_CUDA_COMPILE_OBJECT "${CMAKE_CUDA_COMPILE_OBJECT} -gencode arch=compute_75,code=sm_75")
-    set(CMAKE_CUDA_COMPILE_OBJECT "${CMAKE_CUDA_COMPILE_OBJECT} -gencode arch=compute_86,code=sm_86")
-    set(CMAKE_CUDA_COMPILE_OBJECT "${CMAKE_CUDA_COMPILE_OBJECT} --expt-relaxed-constexpr")
 endif()
 
 set(LIBRARY_FILES
@@ -66,11 +57,12 @@ set(LIBRARY_FILES
         include/General/Quaternion.h
         source/General/Quaternion.cpp
 )
+
 add_library(PhysicsEngine STATIC
-    ${LIBRARY_FILES}
+        ${LIBRARY_FILES}
 )
 
-if(HAS_CUDA)
+if (CUDAToolkit_FOUND AND NOT ${CUDAToolkit_VERSION} VERSION_LESS "12.0")
     target_compile_features(PhysicsEngine PUBLIC cxx_std_11)
     set_target_properties(PhysicsEngine
             PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
@@ -78,11 +70,11 @@ if(HAS_CUDA)
 
     # CUDA files and headers
     set(CUDA_CODE
-
+            # Add your CUDA source files here
     )
 
     target_sources(
             PhysicsEngine PRIVATE
-        ${CUDA_CODE}
+            ${CUDA_CODE}
     )
 endif()
