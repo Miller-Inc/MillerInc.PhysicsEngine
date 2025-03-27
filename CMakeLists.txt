@@ -56,6 +56,11 @@ set(LIBRARY_FILES
         source/General/Vector.cpp
         include/General/Quaternion.h
         source/General/Quaternion.cpp
+        source/BasePhysics/MObject.cpp
+        include/BasePhysics/MObject.h
+        include/GeneralTypes.h
+        include/BasePhysics/MBounds.h
+        source/BasePhysics/MBounds.cpp
 )
 
 add_library(PhysicsEngine STATIC
