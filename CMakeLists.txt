@@ -55,45 +55,17 @@ if (HAS_CUDA)
     set(CMAKE_CUDA_COMPILE_OBJECT "${CMAKE_CUDA_COMPILE_OBJECT} --expt-relaxed-constexpr")
 endif()
 
-add_library(PhysicsEngine STATIC
-        source/library.cpp
-        include/library.h
+set(LIBRARY_FILES
         include/FullEngineIncludes.h
-        include/FieldTypes/BaseTypes/Vector3.h
-        source/FieldTypes/BaseTypes/Vector3.cpp
-        include/FieldTypes/BaseTypes/Quaternion.h
-        include/FieldTypes/ComplexTypes/Force.h
-        source/FieldTypes/ComplexTypes/Force.cpp
-        include/FieldTypes/ComplexTypes/ContactForce.h
-        source/FieldTypes/ComplexTypes/ContactForce.cpp
-        include/PhysicsObjects/BaseObject.h
-        source/PhysicsObjects/BaseObject.cpp
-        source/PhysicsObjects/Collidables/ImpulseObject.cpp
-        include/PhysicsObjects/Collidables/ImpulseObject.h
-        include/PhysicsObjects/Collidables/CollisionObject.h
-        source/PhysicsObjects/Collidables/CollisionObject.cpp
-        include/PhysicsObjects/Collidables/SimpleShapes/Sphere.h
-        source/PhysicsObjects/Collidables/SimpleShapes/Sphere.cpp
-        include/PhysicsEngine/Scenes/Scene.h
-        source/PhysicsEngine/Scenes/Scene.cpp
-        include/PhysicsObjects/Collidables/SimpleShapes/Cube.h
-        source/PhysicsObjects/Collidables/SimpleShapes/Cube.cpp
-        include/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.h
-        source/PhysicsObjects/Collidables/SimpleShapes/FlatSheet.cpp
-        source/FieldTypes/BaseTypes/Quaternion.cpp
-        include/FieldTypes/ComplexTypes/PosVariableForce.h
-        include/FieldTypes/ComplexTypes/PositionForces/GravityForce.h
-        source/FieldTypes/ComplexTypes/PositionForces/GravityForce.cpp
-        include/FieldTypes/ComplexTypes/PositionForces/SpringForce.h
-        include/FieldTypes/ComplexTypes/PositionForces/DragForce.h
-        source/FieldTypes/ComplexTypes/PositionForces/DragForce.cpp
-        source/FieldTypes/ComplexTypes/PositionForces/SpringForce.cpp
-        include/CrossPlatformMacros.h
-        GPU/GPU-Macros.h
-        include/FieldTypes/BaseTypes/Vector3Math.h
-        include/FieldTypes/BaseTypes/Vector3Math.h
-        source/FieldTypes/BaseTypes/Vector3Math.cpp
-        GPU/Cuda-Engine/Math/Vector3Math.cu
+        include/library.h
+        source/library.cpp
+        include/General/Vector.h
+        source/General/Vector.cpp
+        include/General/Quaternion.h
+        source/General/Quaternion.cpp
+)
+add_library(PhysicsEngine STATIC
+    ${LIBRARY_FILES}
 )
 
 if(HAS_CUDA)
@@ -102,11 +74,13 @@ if(HAS_CUDA)
             PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
     target_link_libraries(PhysicsEngine PRIVATE CUDA::cudart)
 
+    # CUDA files and headers
+    set(CUDA_CODE
+
+    )
+
     target_sources(
             PhysicsEngine PRIVATE
-            GPU/CUDA.Physics/kernel.cu
-            GPU/CUDA.Physics/kernel.h
-            GPU/Cuda-Engine/gpuScene.h
-            GPU/Cuda-Engine/gpuScene.cu
+        ${CUDA_CODE}
     )
 endif()
