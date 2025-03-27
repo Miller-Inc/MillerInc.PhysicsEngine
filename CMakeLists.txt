@@ -20,7 +20,6 @@ find_package(CUDAToolkit)
 
 if (CUDAToolkit_FOUND)
     message(STATUS "CUDA found")
-    enable_language(CUDA)
     include_directories(${CUDAToolkit_INCLUDE_DIRS})
     include_directories(${CUDAToolkit_INCLUDE_DIRS}/include)
 
@@ -38,6 +37,8 @@ if (CUDAToolkit_FOUND)
         message(STATUS "CUDA Toolkit version is compatible")
 
         message(STATUS "Enabling CUDA")
+
+        enable_language(CUDA)
         add_definitions(-DCUDA_AVAILABLE=true)
         enable_language(CUDA)
     endif()
