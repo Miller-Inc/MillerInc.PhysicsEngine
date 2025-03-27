@@ -38,8 +38,8 @@ jobs:
         if: success()
         run: mkdir -p artifacts && sudo cp ./libPhysicsEngine.a artifacts/
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: static-library
-          path: artifacts/
+#      - name: Upload artifact
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: static-library
+#          path: artifacts/
