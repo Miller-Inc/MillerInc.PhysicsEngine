@@ -37,12 +37,12 @@ jobs:
 #        run: cmake -S . -B cmake-build-release-wsl -G "Unix Makefiles" -DCMAKE_CXX_COMPILER=/usr/bin/g++
 #          -DCMAKE_CUDA_COMPILER=/usr/local/cuda/bin/nvcc
 
-      - name: Archive static library
-        if: success()
-        run: mkdir -p artifacts && sudo cp ./libPhysicsEngine.a artifacts/
+#      - name: Archive static library
+#        if: success()
+#        run: mkdir -p artifacts && sudo cp ./libPhysicsEngine.a artifacts/
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: static-library
-          path: artifacts/
+#      - name: Upload artifact
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: static-library
+#          path: artifacts/
