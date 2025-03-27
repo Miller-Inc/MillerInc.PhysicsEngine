@@ -2,8 +2,6 @@
 // Created by James Miller on 3/26/2025.
 //
 
-#pragma once
-
 #include "../../include/General/Vector.h"
 
 namespace MillerPhysics
