@@ -14,6 +14,12 @@ namespace MillerPhysics
         MQuaternion& normalize();
         MQuaternion& conjugate();
         MQuaternion& inverse();
+
+        [[nodiscard]] std::string ToString() const
+        {
+            return "(" + std::to_string(x) + ", " + std::to_string(y) +
+                ", " + std::to_string(z) + ", " + std::to_string(w) + ")";
+        }
     } MQuaternion;
 
     MQuaternion operator+(const MQuaternion& left, const MQuaternion& right);

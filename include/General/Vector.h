@@ -59,6 +59,11 @@ namespace MillerPhysics
             return *this;
         }
 
+        std::string ToString() const
+        {
+            return std::to_string(x) + ", " + std::to_string(y);
+        }
+
     } MVector2D;
 
     /// <summary>3D Vector</summary>
@@ -132,6 +137,11 @@ namespace MillerPhysics
             y /= magnitude;
             z /= magnitude;
             return *this;
+        }
+
+        std::string ToString() const
+        {
+            return std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z);
         }
     } MVector;
 
@@ -231,14 +241,19 @@ namespace MillerPhysics
             return *this;
         }
 
-        MVector4D& noramlize()
+        MVector4D& normalize()
         {
-            float magnitude = sqrt(x * x + y * y + z * z);
+            auto magnitude = (float)sqrt(x * x + y * y + z * z);
             x /= magnitude;
             y /= magnitude;
             z /= magnitude;
             w /= magnitude;
             return *this;
+        }
+
+        [[nodiscard]] std::string ToString() const
+        {
+            return std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ", " + std::to_string(w);
         }
 
     } MVector4D;

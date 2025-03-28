@@ -61,6 +61,7 @@ set(LIBRARY_FILES
         include/GeneralTypes.h
         include/BasePhysics/MBounds.h
         source/BasePhysics/MBounds.cpp
+        include/SimulationTypes/EventTypes.h
 )
 
 add_library(PhysicsEngine STATIC

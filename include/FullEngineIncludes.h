@@ -9,4 +9,6 @@
 #include "CrossPlatformMacros.h"
 #include "General/Vector.h"
 #include "General/Quaternion.h"
+#include "BasePhysics/MBounds.h"
+#include "BasePhysics/MObject.h"
 
