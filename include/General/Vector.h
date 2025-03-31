@@ -59,9 +59,57 @@ namespace MillerPhysics
             return *this;
         }
 
-        std::string ToString() const
+        [[nodiscard]] std::string ToString() const
         {
             return std::to_string(x) + ", " + std::to_string(y);
+        }
+
+        [[nodiscard]] float Length() const
+        {
+            return (float)sqrt(x * x + y * y);
+        }
+
+        [[nodiscard]] float LengthSquared() const
+        {
+            return x * x + y * y;
+        }
+
+        [[nodiscard]] float Dot(const MVector2D& other) const
+        {
+            return x * other.x + y * other.y;
+        }
+
+        [[nodiscard]] MVector2D Cross(const MVector2D& other) const
+        {
+            return {
+                y * other.x - x * other.y,
+                x * other.y - y * other.x};
+        }
+
+        [[nodiscard]] float Angle(const MVector2D& other) const
+        {
+            return acos(Dot(other) / (Length() * other.Length()));
+        }
+
+        [[nodiscard]] float AngleDegrees(const MVector2D& other) const
+        {
+            return Angle(other) * (180.0f / M_PI);
+        }
+
+        [[nodiscard]] float AngleRadians(const MVector2D& other) const
+        {
+            return Angle(other);
+        }
+
+        [[nodiscard]] MVector2D Perpendicular() const
+        {
+            return { -y, x };
+        }
+
+        [[nodiscard]] MVector2D Normalized() const
+        {
+            float magnitude = Length();
+            return { x / magnitude, y / magnitude };
         }
 
     } MVector2D;
@@ -94,7 +142,7 @@ namespace MillerPhysics
             z = other.z;
         }
 
-        explicit MVector(const MVector2D vec2D)
+        explicit MVector(const MVector2D& vec2D)
         {
             x = vec2D.x;
             y = vec2D.y;
@@ -139,9 +187,32 @@ namespace MillerPhysics
             return *this;
         }
 
-        std::string ToString() const
+        [[nodiscard]] std::string ToString() const
         {
             return std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z);
+        }
+
+        [[nodiscard]] float Length() const
+        {
+            return (float)sqrt(x * x + y * y + z * z);
+        }
+
+        [[nodiscard]] float LengthSquared() const
+        {
+            return x * x + y * y + z * z;
+        }
+
+        [[nodiscard]] float Dot(const MVector& other) const
+        {
+            return x * other.x + y * other.y + z * other.z;
+        }
+
+        [[nodiscard]] MVector Cross(const MVector& other) const
+        {
+            return {
+                y * other.z - z * other.y,
+                z * other.x - x * other.z,
+                x * other.y - y * other.x};
         }
     } MVector;
 
@@ -256,6 +327,30 @@ namespace MillerPhysics
             return std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ", " + std::to_string(w);
         }
 
+        [[nodiscard]] float Length() const
+        {
+            return (float)sqrt(x * x + y * y + z * z + w * w);
+        }
+
+        [[nodiscard]] float LengthSquared() const
+        {
+            return x * x + y * y + z * z + w * w;
+        }
+
+        [[nodiscard]] float Dot(const MVector4D& other) const
+        {
+            return x * other.x + y * other.y + z * other.z + w * other.w;
+        }
+
+        [[nodiscard]] MVector4D Cross(const MVector4D& other) const
+        {
+            return {
+                y * other.z - z * other.y,
+                z * other.x - x * other.z,
+                x * other.y - y * other.x,
+                0.0f};
+        }
+
     } MVector4D;
 
     // Vector addition
@@ -278,10 +373,13 @@ namespace MillerPhysics
     // Vector scalar multiplication
     /// <summary>Multiplies the vectors together</summary>
     MVector operator*(const MVector& left, const float& right);
+    MVector operator*(const float& left, const MVector& right);
     /// <summary>Multiplies the vectors together</summary>
     MVector2D operator*(const MVector2D& left, const float& right);
+    MVector2D operator*(const float& left, const MVector2D& right);
     /// <summary>Multiplies the vectors together</summary>
     MVector4D operator*(const MVector4D& left, const float& right);
+    MVector4D operator*(const float& left, const MVector4D& right);
 
     // Vector scalar division
     /// <summary>Divides the vectors</summary>

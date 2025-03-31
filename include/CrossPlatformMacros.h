@@ -4,8 +4,22 @@
 
 #pragma once
 
+#include <cstdio>
+#include <iostream>
+#include <string>
+#include <cstddef>
+#include <cmath>
+
 #if CUDA_AVAILABLE
 #include <cuda_runtime.h>
+#include <cuda_device_runtime_api.h>
+#define HOST_ONLY __host__
+#define DEVICE_ONLY __device__
+#define HOST_AND_DEVICE __host__ __device__
+#elif
+#define HOST_ONLY
+#define DEVICE_ONLY
+#define HOST_AND_DEVICE
 #endif
 
 #ifndef M_PI_HDEF
@@ -13,17 +27,26 @@
 #endif
 
 #ifndef M_PI
-#define M_PI 3.14159265358979323846
+#define M_PI 3.14159265358979323846f
 #endif
+
+#ifndef M_UNIVERSAL_GRAVITATION
+#define M_UNIVERSAL_GRAVITATION 6.67430e-11f
+#endif
+
+#ifndef M_MASS_OF_EARTH
+#define M_MASS_OF_EARTH 5.972e24f
+#endif
+
+#ifndef M_RADIUS_OF_EARTH
+#define M_RADIUS_OF_EARTH 6370000.0f
+#endif
+
+
 namespace MillerPhysics
 {
     class MObject; // Forward declaration
 
-    typedef void (*PhysicsFunction)(MObject*, float);
+    typedef void (*PhysicsFunction)(MObject&, float);
 }
 
-#include <cstdio>
-#include <iostream>
-#include <string>
-#include <cstddef>
-#include <cmath>

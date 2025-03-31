@@ -11,16 +11,24 @@
 
 namespace MillerPhysics {
 
+class MScene;
+
 class MObject {
     // Initializers
     public:
     MObject(); // Default constructor
+    MObject(const MObject& obj);
+    explicit MObject(const MVector& pos);
+    MObject(const MVector& pos, const MQuaternion& rot);
+    MObject(MVector pos, MQuaternion rot, float mass);
 
     virtual ~MObject() = default; // Default destructor
 
     // Fields
     protected:
+    friend class MScene;
     // Simple fields
+    float m_mass;
     MVector m_position;
     MVector m_init_position;
     MQuaternion m_rotation{};
@@ -32,6 +40,8 @@ class MObject {
 
     bool m_is_running = false;
 
+public:
+
     // Collision fields
     MBounds* m_bounds = nullptr;
 
@@ -42,6 +52,8 @@ class MObject {
     virtual void Pause();
     virtual void Resume();
     virtual void Restart();
+    void SetMass(float mass);
+    [[nodiscard]] float GetMass() const;
     virtual void SetupPhysics(PhysicsFunction function);
     void SetPosition(const MVector& position);
     [[nodiscard]] MVector GetPosition() const;

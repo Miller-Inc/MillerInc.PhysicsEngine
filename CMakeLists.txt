@@ -62,6 +62,11 @@ set(LIBRARY_FILES
         include/BasePhysics/MBounds.h
         source/BasePhysics/MBounds.cpp
         include/SimulationTypes/EventTypes.h
+        include/BasePhysics/PhysicsSim/BasePhysicsFunctions.h
+        source/BasePhysics/PhysicsSim/BasePhysicsFunctions.cpp
+        include/BasePhysics/MScene.h
+        source/BasePhysics/MScene.cpp
+        source/BasePhysics/MBounds.cu
 )
 
 add_library(PhysicsEngine STATIC
@@ -77,6 +82,7 @@ if (CUDAToolkit_FOUND AND NOT ${CUDAToolkit_VERSION} VERSION_LESS "12.0")
     # CUDA files and headers
     set(CUDA_CODE
             # Add your CUDA source files here
+            source/BasePhysics/MScene.cu
     )
 
     target_sources(

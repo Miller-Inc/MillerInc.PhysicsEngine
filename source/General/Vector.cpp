@@ -73,11 +73,28 @@ namespace MillerPhysics
         return result;
     }
 
+    MVector operator*(const float& left, const MVector& right)
+    {
+        MVector result;
+        result.x = left * right.x;
+        result.y = left * right.y;
+        result.z = left * right.z;
+        return result;
+    }
+
     MVector2D operator*(const MVector2D& left, const float& right)
     {
         MVector2D result;
         result.x = left.x * right;
         result.y = left.y * right;
+        return result;
+    }
+
+    MVector2D operator*(const float& left, const MVector2D& right)
+    {
+        MVector2D result;
+        result.x = left * right.x;
+        result.y = left * right.y;
         return result;
     }
 
@@ -88,6 +105,16 @@ namespace MillerPhysics
         result.y = left.y * right;
         result.z = left.z * right;
         result.w = left.w * right;
+        return result;
+    }
+
+    MVector4D operator*(const float& left, const MVector4D& right)
+    {
+        MVector4D result;
+        result.x = left * right.x;
+        result.y = left * right.y;
+        result.z = left * right.z;
+        result.w = left * right.w;
         return result;
     }
 

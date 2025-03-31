@@ -7,6 +7,7 @@
 
 namespace MillerPhysics
 {
+
     typedef struct MQuaternion
     {
         float x, y, z, w;
@@ -15,10 +16,52 @@ namespace MillerPhysics
         MQuaternion& conjugate();
         MQuaternion& inverse();
 
+        MQuaternion()
+        {
+            x = y = z = 0;
+            w = 1;
+        }
+
+        MQuaternion(const float _x, const float _y, const float _z, const float _w)
+        {
+            x = _x;
+            y = _y;
+            z = _z;
+            w = _w;
+        }
+
+        explicit MQuaternion(const MVector4D& vec)
+        {
+            x = vec.x;
+            y = vec.y;
+            z = vec.z;
+            w = vec.w;
+            normalize();
+        }
+
         [[nodiscard]] std::string ToString() const
         {
             return "(" + std::to_string(x) + ", " + std::to_string(y) +
                 ", " + std::to_string(z) + ", " + std::to_string(w) + ")";
+        }
+
+        [[nodiscard]] float Length() const
+        {
+            return sqrt(x * x + y * y + z * z + w * w);
+        }
+
+        [[nodiscard]] float LengthSquared() const
+        {
+            return x * x + y * y + z * z + w * w;
+        }
+
+        [[nodiscard]] MQuaternion Normalize() const
+        {
+            const float len = Length();
+            if (len == 0)
+                return {0, 0, 0, 1};
+            return {x / len, y / len, z / len, w / len
+        };
         }
     } MQuaternion;
 

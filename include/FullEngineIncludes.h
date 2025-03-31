@@ -11,4 +11,6 @@
 #include "General/Quaternion.h"
 #include "BasePhysics/MBounds.h"
 #include "BasePhysics/MObject.h"
+#include "BasePhysics/PhysicsSim/BasePhysicsFunctions.h"
+#include "BasePhysics/MScene.h"
 
