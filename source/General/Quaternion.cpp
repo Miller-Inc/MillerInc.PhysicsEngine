@@ -126,6 +126,18 @@ namespace MillerPhysics
         return *this;
     }
 
+    MVector MQuaternion::operator*(const MVector& vector) const
+    {
+        // Rotates the vector by the quaternion
+        MVector uv, uuv;
+        MVector qvec(x, y, z);
+        uv = qvec.Cross(vector);
+        uuv = qvec.Cross(uv);
+        uv *= (2.0f * w);
+        uuv *= 2.0f;
+        return vector + uv + uuv;
+    }
+
     MQuaternion lerp(const MQuaternion& start, const MQuaternion& end, const float& percent)
     {
         MQuaternion result;

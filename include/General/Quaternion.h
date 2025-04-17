@@ -15,6 +15,7 @@ namespace MillerPhysics
         MQuaternion& normalize();
         MQuaternion& conjugate();
         MQuaternion& inverse();
+        MVector operator*(const MVector& vector) const;
 
         MQuaternion()
         {
