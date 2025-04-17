@@ -401,6 +401,26 @@ namespace MillerPhysics
     /// <summary>Calculates the cross product of the vectors</summary>
     MVector operator^(const MVector& left, const MVector& right);
 
+    bool operator==(const MVector& left, const MVector& right);
+    bool operator==(const MVector2D& left, const MVector2D& right);
+    bool operator==(const MVector4D& left, const MVector4D& right);
+    bool operator!=(const MVector& left, const MVector& right);
+    bool operator!=(const MVector2D& left, const MVector2D& right);
+    bool operator!=(const MVector4D& left, const MVector4D& right);
+
+    bool operator<(const MVector& left, const MVector& right);
+    bool operator<(const MVector2D& left, const MVector2D& right);
+    bool operator<(const MVector4D& left, const MVector4D& right);
+    bool operator>(const MVector& left, const MVector& right);
+    bool operator>(const MVector2D& left, const MVector2D& right);
+    bool operator>(const MVector4D& left, const MVector4D& right);
+    bool operator<=(const MVector& left, const MVector& right);
+    bool operator<=(const MVector2D& left, const MVector2D& right);
+    bool operator<=(const MVector4D& left, const MVector4D& right);
+    bool operator>=(const MVector& left, const MVector& right);
+    bool operator>=(const MVector2D& left, const MVector2D& right);
+    bool operator>=(const MVector4D& left, const MVector4D& right);
+
     // Vector normalization
     MVector normalize(MVector vec);
     MVector2D normalize2D(MVector2D vec);

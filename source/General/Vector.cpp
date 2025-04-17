@@ -189,6 +189,100 @@ namespace MillerPhysics
         return { vec.x / magnitude, vec.y / magnitude, vec.z / magnitude, vec.w / magnitude };
     }
 
+    bool operator==(const MVector& left, const MVector& right)
+    {
+        return (left.x - right.x) < 0.0001f &&
+            (left.y - right.y) < 0.0001f &&
+            (left.z - right.z) < 0.0001f;
+    }
 
+    bool operator==(const MVector2D& left, const MVector2D& right)
+    {
+        return (left.x - right.x) < 0.0001f &&
+            (left.y - right.y) < 0.0001f;
+    }
+
+    bool operator==(const MVector4D& left, const MVector4D& right)
+    {
+        return (left.x - right.x) < 0.0001f &&
+            (left.y - right.y) < 0.0001f &&
+            (left.z - right.z) < 0.0001f &&
+            (left.w - right.w) < 0.0001f;
+    }
+
+    bool operator!=(const MVector& left, const MVector& right)
+    {
+        return !(left == right);
+    }
+
+    bool operator!=(const MVector2D& left, const MVector2D& right)
+    {
+        return !(left == right);
+    }
+
+    bool operator!=(const MVector4D& left, const MVector4D& right)
+    {
+        return !(left == right);
+    }
+
+    bool operator<(const MVector& left, const MVector& right)
+    {
+        return left.x < right.x && left.y < right.y && left.z < right.z;
+    }
+
+    bool operator>(const MVector& left, const MVector& right)
+    {
+        return left.x > right.x && left.y > right.y && left.z > right.z;
+    }
+
+    bool operator<=(const MVector& left, const MVector& right)
+    {
+        return left.x <= right.x && left.y <= right.y && left.z <= right.z;
+    }
+
+    bool operator>=(const MVector& left, const MVector& right)
+    {
+        return left.x >= right.x && left.y >= right.y && left.z >= right.z;
+    }
+
+    bool operator<(const MVector2D& left, const MVector2D& right)
+    {
+        return left.x < right.x && left.y < right.y;
+    }
+
+    bool operator>(const MVector2D& left, const MVector2D& right)
+    {
+        return left.x > right.x && left.y > right.y;
+    }
+
+    bool operator<=(const MVector2D& left, const MVector2D& right)
+    {
+        return left.x <= right.x && left.y <= right.y;
+    }
+
+    bool operator>=(const MVector2D& left, const MVector2D& right)
+    {
+        return left.x >= right.x && left.y >= right.y;
+    }
+
+    bool operator<(const MVector4D& left, const MVector4D& right)
+    {
+        return left.x < right.x && left.y < right.y && left.z < right.z && left.w < right.w;
+    }
+
+    bool operator>(const MVector4D& left, const MVector4D& right)
+    {
+        return left.x > right.x && left.y > right.y && left.z > right.z && left.w > right.w;
+    }
+
+    bool operator<=(const MVector4D& left, const MVector4D& right)
+    {
+        return left.x <= right.x && left.y <= right.y && left.z <= right.z && left.w <= right.w;
+    }
+
+    bool operator>=(const MVector4D& left, const MVector4D& right)
+    {
+        return left.x >= right.x && left.y >= right.y && left.z >= right.z && left.w >= right.w;
+    }
 
 }
