@@ -89,8 +89,7 @@ namespace MillerPhysics {
         m_is_running = false;
         #if CUDA_AVAILABLE
         cudaFree(m_bounds->gpu_center);
-        cudaFree(m_bounds->gpu_max);
-        cudaFree(m_bounds->gpu_min);
+        cudaFree(m_bounds->gpu_points);
         #endif
     }
 

@@ -12,8 +12,6 @@
 #include <cmath>
 #include <vector>
 
-#pragma once
-
 #include <vector>
 #include "MObject.h"
 

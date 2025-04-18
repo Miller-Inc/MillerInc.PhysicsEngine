@@ -3,7 +3,10 @@
 //
 
 #include "../../include/BasePhysics/MScene.h"
+
+#include <chrono>
 #include <iostream>
+#include <thread>
 
 namespace MillerPhysics {
 
@@ -31,6 +34,8 @@ namespace MillerPhysics {
         }
 
         checkCollisions();
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
 
     void MScene::EndPlay(const EndPlayEvent& reason)
