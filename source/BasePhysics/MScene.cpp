@@ -49,7 +49,7 @@ namespace MillerPhysics {
 
 
 #if !CUDA_AVAILABLE
-    void MScene::checkCollisions() {
+    void MScene::checkCollisions() const {
         for (size_t i = 0; i < m_objects.size(); ++i) {
             for (size_t j = i + 1; j < m_objects.size(); ++j) {
                 if (m_objects[i]->m_bounds->intersects(*m_objects[j]->m_bounds)) {
