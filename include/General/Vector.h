@@ -214,6 +214,55 @@ namespace MillerPhysics
                 z * other.x - x * other.z,
                 x * other.y - y * other.x};
         }
+
+        __host__ __device__ bool operator==(const MVector& other) const
+        {
+            return (fabs(x - other.x) < 0.0001f &&
+                    fabs(y - other.y) < 0.0001f &&
+                    fabs(z - other.z) < 0.0001f);
+        }
+
+        __host__ __device__ bool operator!=(const MVector& other) const
+        {
+            return !(*this == other);
+        }
+
+        __host__ __device__ MVector operator+(const MVector& other) const
+        {
+            return {x + other.x, y + other.y, z + other.z};
+        }
+
+        __host__ __device__ MVector operator-(const MVector& other) const
+        {
+            return {x - other.x, y - other.y, z - other.z};
+        }
+
+        __host__ __device__ MVector operator*(float other) const
+        {
+            return {x * other, y * other, z * other};
+        }
+
+        __host__ __device__ MVector operator/(float other) const
+        {
+            return {x / other, y / other, z / other};
+        }
+
+        __host__ __device__ bool operator<(const MVector& other) const
+        {
+            return (x < other.x && y < other.y && z < other.z);
+        }
+        __host__ __device__ bool operator>(const MVector& other) const
+        {
+            return (x > other.x && y > other.y && z > other.z);
+        }
+        __host__ __device__ bool operator<=(const MVector& other) const
+        {
+            return (x <= other.x && y <= other.y && z <= other.z);
+        }
+        __host__ __device__ bool operator>=(const MVector& other) const
+        {
+            return (x >= other.x && y >= other.y && z >= other.z);
+        }
     } MVector;
 
     /// <summary>3D Vector</summary>
@@ -355,8 +404,6 @@ namespace MillerPhysics
 
     // Vector addition
     /// <summary>Adds the vectors together</summary>
-    MVector operator+(const MVector& left, const MVector& right);
-    /// <summary>Adds the vectors together</summary>
     MVector2D operator+(const MVector2D& left, const MVector2D& right);
     /// <summary>Adds the vectors together</summary>
     MVector4D operator+(const MVector4D& left, const MVector4D& right);
@@ -364,15 +411,12 @@ namespace MillerPhysics
 
     // Vector subtraction
     /// <summary>Subtracts the vectors</summary>
-    MVector operator-(const MVector& left, const MVector& right);
-    /// <summary>Subtracts the vectors</summary>
     MVector2D operator-(const MVector2D& left, const MVector2D& right);
     /// <summary>Subtracts the vectors</summary>
     MVector4D operator-(const MVector4D& left, const MVector4D& right);
 
     // Vector scalar multiplication
     /// <summary>Multiplies the vectors together</summary>
-    MVector operator*(const MVector& left, const float& right);
     MVector operator*(const float& left, const MVector& right);
     /// <summary>Multiplies the vectors together</summary>
     MVector2D operator*(const MVector2D& left, const float& right);
@@ -382,8 +426,6 @@ namespace MillerPhysics
     MVector4D operator*(const float& left, const MVector4D& right);
 
     // Vector scalar division
-    /// <summary>Divides the vectors</summary>
-    MVector operator/(const MVector& left, const float& right);
     /// <summary>Divides the vectors</summary>
     MVector2D operator/(const MVector2D& left, const float& right);
     /// <summary>Divides the vectors</summary>
@@ -401,23 +443,17 @@ namespace MillerPhysics
     /// <summary>Calculates the cross product of the vectors</summary>
     MVector operator^(const MVector& left, const MVector& right);
 
-    bool operator==(const MVector& left, const MVector& right);
     bool operator==(const MVector2D& left, const MVector2D& right);
     bool operator==(const MVector4D& left, const MVector4D& right);
-    bool operator!=(const MVector& left, const MVector& right);
     bool operator!=(const MVector2D& left, const MVector2D& right);
     bool operator!=(const MVector4D& left, const MVector4D& right);
 
-    bool operator<(const MVector& left, const MVector& right);
     bool operator<(const MVector2D& left, const MVector2D& right);
     bool operator<(const MVector4D& left, const MVector4D& right);
-    bool operator>(const MVector& left, const MVector& right);
     bool operator>(const MVector2D& left, const MVector2D& right);
     bool operator>(const MVector4D& left, const MVector4D& right);
-    bool operator<=(const MVector& left, const MVector& right);
     bool operator<=(const MVector2D& left, const MVector2D& right);
     bool operator<=(const MVector4D& left, const MVector4D& right);
-    bool operator>=(const MVector& left, const MVector& right);
     bool operator>=(const MVector2D& left, const MVector2D& right);
     bool operator>=(const MVector4D& left, const MVector4D& right);
 

@@ -64,15 +64,6 @@ namespace MillerPhysics
     }
 
     // Vector scalar multiplication
-    MVector operator*(const MVector& left, const float& right)
-    {
-        MVector result;
-        result.x = left.x * right;
-        result.y = left.y * right;
-        result.z = left.z * right;
-        return result;
-    }
-
     MVector operator*(const float& left, const MVector& right)
     {
         MVector result;
@@ -119,15 +110,6 @@ namespace MillerPhysics
     }
 
     // Vector scalar division
-    MVector operator/(const MVector& left, const float& right)
-    {
-        MVector result;
-        result.x = left.x / right;
-        result.y = left.y / right;
-        result.z = left.z / right;
-        return result;
-    }
-
     MVector2D operator/(const MVector2D& left, const float& right)
     {
         MVector2D result;
@@ -144,11 +126,6 @@ namespace MillerPhysics
         result.z = left.z / right;
         result.w = left.w / right;
         return result;
-    }
-
-    float operator*(const MVector& left, const MVector& right)
-    {
-        return left.x * right.x + left.y * right.y + left.z * right.z;
     }
 
     float operator*(const MVector2D& left, const MVector2D& right)
@@ -189,13 +166,6 @@ namespace MillerPhysics
         return { vec.x / magnitude, vec.y / magnitude, vec.z / magnitude, vec.w / magnitude };
     }
 
-    bool operator==(const MVector& left, const MVector& right)
-    {
-        return (left.x - right.x) < 0.0001f &&
-            (left.y - right.y) < 0.0001f &&
-            (left.z - right.z) < 0.0001f;
-    }
-
     bool operator==(const MVector2D& left, const MVector2D& right)
     {
         return (left.x - right.x) < 0.0001f &&
@@ -210,11 +180,6 @@ namespace MillerPhysics
             (left.w - right.w) < 0.0001f;
     }
 
-    bool operator!=(const MVector& left, const MVector& right)
-    {
-        return !(left == right);
-    }
-
     bool operator!=(const MVector2D& left, const MVector2D& right)
     {
         return !(left == right);
@@ -225,24 +190,9 @@ namespace MillerPhysics
         return !(left == right);
     }
 
-    bool operator<(const MVector& left, const MVector& right)
-    {
-        return left.x < right.x && left.y < right.y && left.z < right.z;
-    }
-
-    bool operator>(const MVector& left, const MVector& right)
-    {
-        return left.x > right.x && left.y > right.y && left.z > right.z;
-    }
-
     bool operator<=(const MVector& left, const MVector& right)
     {
         return left.x <= right.x && left.y <= right.y && left.z <= right.z;
-    }
-
-    bool operator>=(const MVector& left, const MVector& right)
-    {
-        return left.x >= right.x && left.y >= right.y && left.z >= right.z;
     }
 
     bool operator<(const MVector2D& left, const MVector2D& right)

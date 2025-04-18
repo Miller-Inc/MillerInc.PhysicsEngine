@@ -16,10 +16,12 @@
 #define HOST_ONLY __host__
 #define DEVICE_ONLY __device__
 #define HOST_AND_DEVICE __host__ __device__
-#elif
+#else
 #define HOST_ONLY
 #define DEVICE_ONLY
 #define HOST_AND_DEVICE
+#define __host__
+#define __device__
 #endif
 
 #ifndef M_PI_HDEF
