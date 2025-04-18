@@ -9,6 +9,7 @@
 #include <string>
 #include <cstddef>
 #include <cmath>
+#include <cstring>
 
 #if CUDA_AVAILABLE
 #include <cuda_runtime.h>

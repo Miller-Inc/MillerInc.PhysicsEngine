@@ -208,16 +208,6 @@ namespace MillerPhysics
         MBounds::CopyToGPU();
     }
 
-    MBounds::MBounds(const MVector& min, const MVector& max)
-    {
-        m_center = {(min.x + max.x) / 2.0f, (min.y + max.y) / 2.0f, (min.z + max.z) / 2.0f};
-
-        AddBoundPoint(min);
-        AddBoundPoint(max);
-
-        MBounds::CopyToGPU();
-    }
-
     MBounds::~MBounds()
     {
         // Free GPU memory

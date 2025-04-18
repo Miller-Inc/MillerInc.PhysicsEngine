@@ -14,7 +14,6 @@ namespace MillerPhysics
     {
     public:
         MBounds();
-        MBounds(const MVector& min, const MVector& max);
         [[nodiscard]] bool intersects(const MBounds& bounds) const;
 
         std::vector<MVector> GetBoundPoints();

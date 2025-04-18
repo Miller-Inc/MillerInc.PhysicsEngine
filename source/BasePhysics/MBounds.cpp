@@ -9,24 +9,14 @@ namespace MillerPhysics
     #if !CUDA_AVAILABLE
     MBounds::MBounds()
     {
-        m_min = new MVector(0, 0, 0);
-        m_max = new MVector(0, 0, 0);
         m_center = {0, 0, 0};
+        AddBoundPoint(m_center);
     }
 
-    MBounds::MBounds(const MVector& min, const MVector& max)
-    {
-        m_min = (MVector*)malloc(sizeof(MVector));
-        memcpy(m_min, &min, sizeof(MVector));
-        m_max = (MVector*)malloc(sizeof(MVector));
-        memcpy(m_max, &max, sizeof(MVector));
-        m_center = (*m_max + *m_min) / 2;
-    }
     bool MBounds::intersects(const MBounds& bounds) const
     {
-        return (m_min->x <= bounds.m_max->x && m_max->x >= bounds.m_min->x) &&
-               (m_min->y <= bounds.m_max->y && m_max->y >= bounds.m_min->y) &&
-               (m_min->z <= bounds.m_max->z && m_max->z >= bounds.m_min->z);
+        // TODO: Implement intersection logic for CPU
+        return false; // Implement intersection logic here
     }
 
     MVector MBounds::GetCenter()
@@ -34,29 +24,9 @@ namespace MillerPhysics
         return m_center;
     }
 
-    MVector MBounds::GetMin()
-    {
-        return *m_min;
-    }
-
-    MVector MBounds::GetMax()
-    {
-        return *m_max;
-    }
-
     void MBounds::SetCenter(const MVector& center)
     {
         m_center = center;
-    }
-
-    void MBounds::SetMin(const MVector& min)
-    {
-        memcpy(m_min, &min, sizeof(MVector));
-    }
-
-    void MBounds::SetMax(const MVector& max)
-    {
-        memcpy(m_max, &max, sizeof(MVector));
     }
 
     #endif
