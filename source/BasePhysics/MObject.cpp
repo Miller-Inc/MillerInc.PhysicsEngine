@@ -13,7 +13,7 @@ namespace MillerPhysics {
         m_init_rotation = MQuaternion(0, 0, 0, 1);
         m_scale = MVector(1, 1, 1);
         m_init_scale = MVector(1, 1, 1);
-        m_bounds = new MBounds(m_position - (m_scale / 2), m_position + (m_scale / 2));
+        m_bounds = new MBounds(MBounds::DefaultMBounds(m_position));
         m_mass = 1.0f;
     }
 
@@ -25,7 +25,7 @@ namespace MillerPhysics {
         m_init_rotation = m_rotation;
         m_scale = MVector(1, 1, 1);
         m_init_scale = m_scale;
-        m_bounds = new MBounds(m_position - (m_scale / 2), m_position + (m_scale / 2));
+        m_bounds = new MBounds(MBounds::DefaultMBounds(m_position));
         m_mass = 1.0f;
     }
 
@@ -37,7 +37,10 @@ namespace MillerPhysics {
         m_init_rotation = m_rotation;
         m_scale = obj.m_scale;
         m_init_scale = m_scale;
-        m_bounds = new MBounds(m_position - (m_scale / 2), m_position + (m_scale / 2));
+        if (obj.m_bounds)
+            m_bounds = new MBounds(*obj.m_bounds);
+        else
+            m_bounds = new MBounds(MBounds::DefaultMBounds(m_position));
         m_mass = obj.m_mass;
     }
 
@@ -49,7 +52,7 @@ namespace MillerPhysics {
         m_init_rotation = m_rotation;
         m_scale = MVector(1, 1, 1);
         m_init_scale = m_scale;
-        m_bounds = new MBounds(m_position - (m_scale / 2), m_position + (m_scale / 2));
+        m_bounds = new MBounds(MBounds::DefaultMBounds(m_position));
         m_mass = 1.0f;
     }
 
@@ -61,7 +64,7 @@ namespace MillerPhysics {
         m_init_rotation = m_rotation;
         m_scale = MVector(1, 1, 1);
         m_init_scale = m_scale;
-        m_bounds = new MBounds(m_position - (m_scale / 2), m_position + (m_scale / 2));
+        m_bounds = new MBounds(MBounds::DefaultMBounds(m_position));
         m_mass = mass;
     }
 
